@@ -1,0 +1,16 @@
+---
+interface Props { eyebrow?: string; title: string }
+const { eyebrow, title } = Astro.props;
+---
+<section class="cta on-dark">
+  <svg class="cta__curve" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V0 C 1000 70, 400 70, 0 20 Z" fill="#fff" /></svg>
+  <img class="cta__symbol" src="/brand/logos/svg/lsp-symbol-on-dark.svg" alt="" width="100" height="100" />
+  <div class="container">
+    <div class="cta__inner">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h2 class="h1 cta__title">{title}</h2>
+      <slot />
+      <div class="btn-row" style="margin-top:8px"><slot name="actions" /></div>
+    </div>
+  </div>
+</section>

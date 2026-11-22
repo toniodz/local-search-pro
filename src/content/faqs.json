@@ -1,0 +1,9 @@
+[
+  { "id": "websites-cost", "page": "websites", "question": "How much does a pay monthly website cost?", "answer": "Our Website Starter package costs £79 per month plus VAT, with a £149 initial setup fee plus VAT. Additional pages and features are available at an extra cost." },
+  { "id": "websites-contract", "page": "websites", "question": "Is there a minimum contract?", "answer": "Yes. Website Starter is based on a 24-month minimum agreement. Your contract will explain the payment terms, cancellation process and options for your website at the end of the agreement." },
+  { "id": "websites-domain", "page": "websites", "question": "Can I use my existing domain name?", "answer": "Yes. If you already have a domain name, we can normally connect it to your new website, provided you have the necessary access." },
+  { "id": "websites-google", "page": "websites", "question": "Will my website appear on Google?", "answer": "Your website will include basic SEO setup to help search engines discover and understand its pages. However, appearing prominently for competitive searches usually requires additional optimisation and ongoing work." },
+  { "id": "websites-pages", "page": "websites", "question": "Can I add more pages later?", "answer": "Yes. Additional pages and features can be quoted separately as your business grows." },
+  { "id": "websites-updates", "page": "websites", "question": "Can you update my website?", "answer": "Limited content amendments are included within your package. Larger changes, additional functionality and redesigns can be quoted separately." },
+  { "id": "websites-cancel", "page": "websites", "question": "What happens if I cancel?", "answer": "Your agreement will set out cancellation terms, ownership and any options to purchase or transfer your website. We will explain these before you sign up." }
+]

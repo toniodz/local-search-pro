@@ -1,0 +1,35 @@
+/* Local Search Pro — design tokens. See Brand Guidelines. */
+:root {
+  /* Brand colours */
+  --navy: #10283f;
+  --yellow: #ffe500;
+  --yellow-hover: #fff066;
+  --cyan: #05b9f2; /* accents/links/icons on navy ONLY */
+  --cyan-deep: #0590cc; /* large text & logo on light */
+  --cyan-text: #0077b0; /* links, eyebrows, small text on light (4.9:1) */
+  --charcoal: #303030;
+  --pale: #eaf6fd;
+  --white: #ffffff;
+  --surface: #f4f8fb;
+  --border: #dce5ee;
+  --footer-bg: #0b1d2f;
+  --success: #1f8a3a;
+
+  /* Text */
+  --ink: #10283f;
+  --ink-2: #33475b; /* body on white */
+  --ink-3: #465a6e; /* secondary */
+  --on-dark-2: #d6e0ea; /* body on navy */
+
+  /* Type */
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+
+  /* Shape & layout */
+  --r-btn: 8px;
+  --r-card: 12px;
+  --r-feature: 16px;
+  --container: 1200px;
+  --gutter: 24px;
+  --section: 88px;
+}

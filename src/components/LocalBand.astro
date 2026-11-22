@@ -1,0 +1,20 @@
+---
+import Button from "./Button.astro";
+interface Props { title: string; panelTitle: string; panelText: string; ctaHref: string; ctaLabel: string }
+const { title, panelTitle, panelText, ctaHref, ctaLabel } = Astro.props;
+---
+<section style="padding-bottom:var(--section)">
+  <div class="container">
+    <div class="band on-dark">
+      <div class="stack">
+        <h2 class="h2 band__title">{title}</h2>
+        <slot />
+      </div>
+      <div class="band__panel">
+        <p class="band__panel-title">{panelTitle}</p>
+        <p class="muted">{panelText}</p>
+        <Button variant="outline-cyan" href={ctaHref} arrow>{ctaLabel}</Button>
+      </div>
+    </div>
+  </div>
+</section>

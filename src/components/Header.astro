@@ -1,0 +1,44 @@
+---
+import Logo from "./Logo.astro";
+import Button from "./Button.astro";
+interface Props { ctaHref?: string }
+const { ctaHref = "/pricing" } = Astro.props;
+const path = Astro.url.pathname.replace(/(\.html|\/)$/, "") || "/";
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/websites", label: "Websites" },
+  { href: "/google-business-profile", label: "Google Profile" },
+  { href: "/local-seo", label: "Local SEO" },
+  { href: "/seo-growth", label: "SEO Growth" },
+  { href: "/pricing", label: "Pricing" },
+];
+---
+<header class="site-header">
+  <div class="container">
+    <a href="/" aria-label="Local Search Pro home"><Logo class="logo" /></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span>Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>)}
+      <Button href={ctaHref}>Get Started</Button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const nav = document.getElementById("site-nav");
+  if (toggle && nav) {
+    const set = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("is-open", open);
+    };
+    toggle.addEventListener("click", () => set(toggle.getAttribute("aria-expanded") !== "true"));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") { set(false); toggle.focus(); }
+    });
+    nav.addEventListener("click", (e) => { if ((e.target as HTMLElement).closest("a")) set(false); });
+  }
+</script>

@@ -1,0 +1,19 @@
+---
+// Logo masters are outlined SVGs: use as-is, never retype the wordmark.
+interface Props {
+  variant?: "horizontal" | "tagline" | "stacked" | "symbol";
+  tone?: "on-dark" | "on-light" | "mono-navy" | "mono-white";
+  class?: string;
+  decorative?: boolean;
+}
+const { variant = "horizontal", tone = "on-dark", class: className, decorative = false } = Astro.props;
+const sizes = { horizontal: [404, 80], tagline: [414, 88], stacked: [293, 185], symbol: [100, 100] } as const;
+const [width, height] = sizes[variant];
+---
+<img
+  class={className}
+  src={`/brand/logos/svg/lsp-${variant}-${tone}.svg`}
+  alt={decorative ? "" : "Local Search Pro"}
+  width={width}
+  height={height}
+/>

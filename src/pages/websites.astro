@@ -1,0 +1,133 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import PriceCard from "../components/PriceCard.astro";
+import WhyGrid from "../components/WhyGrid.astro";
+import LocalBand from "../components/LocalBand.astro";
+import Steps from "../components/Steps.astro";
+import FAQ from "../components/FAQ.astro";
+import CTA from "../components/CTA.astro";
+
+const faqs = (await getCollection("faqs")).filter((f) => f.data.page === "websites").map((f) => f.data);
+
+const included = [
+  ["Professional Website Design", "A modern, attractive website built using our proven layouts and tailored to your business, branding and services."],
+  ["Up to Five Pages", "Room to introduce your business, explain your services, answer common questions and encourage enquiries."],
+  ["Mobile-Friendly Design", "Your website will work across mobiles, tablets and desktop computers, making it easy for customers to browse wherever they are."],
+  ["Fast, Secure Hosting", "Reliable hosting, SSL security and routine backups to keep your website running smoothly."],
+  ["Contact Forms and Enquiry Buttons", "Clear ways for potential customers to get in touch, request a quote or ask questions."],
+  ["Basic Search Engine Optimisation", "Essential page titles, descriptions, heading structure and other foundational SEO settings to help search engines understand your website."],
+  ["Ongoing Maintenance", "We handle routine technical maintenance and limited content amendments within your agreed package."],
+];
+const why = [
+  { title: "Keep Your Startup Costs Down", text: "A new website doesn't have to mean a large initial investment. Spread the cost through manageable monthly payments." },
+  { title: "Get Online With Less Hassle", text: "You won't need to organise separate hosting, technical maintenance or website setup. We take care of those details." },
+  { title: "Give Customers Confidence", text: "A professional website helps demonstrate that your business is established, approachable and ready to help." },
+  { title: "Make It Easier to Receive Enquiries", text: "With clear information, contact forms and prominent calls to action, visitors can quickly find out how to contact you." },
+  { title: "Keep Your Website Maintained", text: "Your website's hosting and routine technical maintenance are included in your ongoing subscription." },
+];
+const steps = [
+  { title: "Choose Your Website Package", text: "Select Website Starter and complete our simple signup process." },
+  { title: "Tell Us About Your Business", text: "Share your logo, business details, services, images and the information you want included on your website." },
+  { title: "We Build Your Website", text: "We'll adapt one of our professional website layouts to suit your business and prepare it for your review." },
+  { title: "Your Website Goes Live", text: "Once approved, we'll launch your website and take care of the hosting and ongoing technical maintenance covered by your plan." },
+];
+const title = "Pay Monthly Websites for Small Businesses | Local Search Pro";
+const description = "Professional pay monthly websites for UK small businesses from £79 per month + VAT. Design, hosting and maintenance included.";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Pay Monthly Websites",
+  serviceType: "Website design, hosting and maintenance",
+  provider: { "@type": "LocalBusiness", name: "Local Search Pro" },
+  areaServed: { "@type": "Country", name: "United Kingdom" },
+  description,
+  offers: { "@type": "Offer", priceCurrency: "GBP", price: "79", priceSpecification: { "@type": "UnitPriceSpecification", price: "79", priceCurrency: "GBP", unitText: "month" } },
+};
+---
+<BaseLayout {title} {description} ctaHref="#pricing" {jsonLd}>
+  <Hero eyebrow="Pay Monthly Websites for Small Businesses" title="A Professional Website Without the Big Upfront Cost">
+    <div class="stack muted text-pretty" style="gap:12px;max-width:540px">
+      <p>Your business deserves a website that looks professional, works properly and makes it easy for customers to get in touch.</p>
+      <p>At Local Search Pro, we make getting online simple with affordable pay monthly websites designed for small businesses across the UK.</p>
+      <p>Whether you're starting a new business, replacing an outdated website or finally getting your business online, we'll help you make a great first impression.</p>
+    </div>
+    <p class="hero__price">Professional websites from just <strong>£79 per month</strong> + VAT.</p>
+    <div class="btn-row"><Button href="#pricing" arrow>Get Started</Button></div>
+    <ul class="ticks"><li>Mobile-friendly design</li><li>Secure hosting</li><li>Ongoing maintenance</li></ul>
+    <div slot="media" class="hero__media">Laptop + phone mockup (website-service graphic, Stage 3)</div>
+  </Hero>
+
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <h2 class="h2">Everything You Need From a Small Business Website</h2>
+        <div class="stack rule-left muted text-pretty" style="gap:12px">
+          <p>Your website is often the first place potential customers go to learn about your business.</p>
+          <p>It should explain what you do, build confidence in your services and make taking the next step easy.</p>
+          <p>Our pay monthly websites are designed around those essentials, giving you a professional online presence without the expense of a fully bespoke website.</p>
+          <p>We take care of the design, setup, hosting and maintenance, leaving you free to concentrate on running your business.</p>
+        </div>
+      </div>
+      <h3 class="h3" style="margin-top:56px">What's Included?</h3>
+      <div class="cards">
+        {included.map(([t, d]) => <FeatureCard title={t} text={d} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--pale" id="pricing">
+    <div class="container split" style="align-items:center">
+      <div class="stack">
+        <h2 class="h2">Simple Pricing. No Big Website Bill.</h2>
+        <p class="muted text-pretty">Our Website Starter package is ideal for small businesses looking for a professional website at an affordable monthly price.</p>
+        <p class="muted text-pretty">Your monthly subscription includes website hosting, maintenance and the agreed ongoing support.</p>
+      </div>
+      <PriceCard
+        name="Website Starter" amount="£79" setup="£149"
+        items={["Up to five professionally designed pages", "Mobile-friendly layouts", "Contact form", "Basic on-page SEO", "SSL certificate", "Hosting and backups", "Limited ongoing content amendments"]}
+        ctaHref="/signup?plan=website-starter" ctaLabel="Choose Website Starter"
+        note="Minimum 24-month agreement. Additional pages, advanced features and larger content changes are quoted separately."
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <h2 class="h2">Why Choose a Pay Monthly Website?</h2>
+      <WhyGrid items={why} />
+    </div>
+  </section>
+
+  <LocalBand title="Websites Designed for Local Businesses" panelTitle="Need more customers to find your business through Google?" panelText="Our Local SEO packages can help improve your visibility in relevant local searches." ctaHref="/local-seo" ctaLabel="Explore Local SEO">
+    <p class="muted text-pretty">We create affordable websites for businesses across a wide range of industries, including tradespeople, cleaning companies, landscaping businesses, salons, independent retailers and professional services.</p>
+    <p class="muted text-pretty">Whether you work in one town or cover several locations, we'll help you present your services clearly and professionally.</p>
+  </LocalBand>
+
+  <section class="section section--pale">
+    <div class="container">
+      <h2 class="h2" style="margin-bottom:48px">How It Works</h2>
+      <Steps items={steps} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="h2" style="margin:0 auto 36px;max-width:860px">Frequently Asked Questions</h2>
+      <FAQ items={faqs} />
+    </div>
+  </section>
+
+  <CTA eyebrow="Ready for a Better Business Website?" title="Get Online Without the Big Upfront Cost">
+    <p class="muted text-pretty">Give your business a professional website that helps customers understand what you offer and makes it easy for them to contact you.</p>
+    <p class="muted text-pretty">With affordable monthly pricing and ongoing technical support, getting started couldn't be simpler.</p>
+    <p class="hero__price">Websites from <strong>£79 per month</strong> + VAT.</p>
+    <Fragment slot="actions">
+      <Button href="/signup?plan=website-starter" arrow>Get Your Website</Button>
+      <Button variant="ghost-dark" href="/contact">Ask Us a Question</Button>
+    </Fragment>
+  </CTA>
+</BaseLayout>

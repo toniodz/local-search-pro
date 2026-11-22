@@ -1,0 +1,20 @@
+---
+import Logo from "./Logo.astro";
+const links = [
+  { href: "/websites", label: "Websites" },
+  { href: "/google-business-profile", label: "Google Profile" },
+  { href: "/local-seo", label: "Local SEO" },
+  { href: "/seo-growth", label: "SEO Growth" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
+];
+---
+<footer class="site-footer">
+  <div class="container">
+    <Logo />
+    <nav class="footer-nav" aria-label="Footer">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <span>© {new Date().getFullYear()} Local Search Pro · Prices exclude VAT</span>
+  </div>
+</footer>

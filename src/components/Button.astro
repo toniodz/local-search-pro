@@ -1,0 +1,17 @@
+---
+interface Props {
+  variant?: "primary" | "ghost-dark" | "ghost-light" | "outline-cyan";
+  href?: string;
+  block?: boolean;
+  arrow?: boolean;
+  type?: "button" | "submit";
+  class?: string;
+}
+const { variant = "primary", href, block = false, arrow = false, type = "button", class: className } = Astro.props;
+const cls = ["btn", `btn--${variant}`, block && "btn--block", className].filter(Boolean).join(" ");
+---
+{href ? (
+  <a class={cls} href={href}><slot />{arrow && <span aria-hidden="true">→</span>}</a>
+) : (
+  <button class={cls} type={type}><slot />{arrow && <span aria-hidden="true">→</span>}</button>
+)}

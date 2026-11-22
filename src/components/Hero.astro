@@ -1,0 +1,15 @@
+---
+interface Props { eyebrow?: string; title: string }
+const { eyebrow, title } = Astro.props;
+---
+<section class="hero on-dark">
+  <div class="container hero__grid">
+    <div class="stack" style="gap:22px">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1 class="h1">{title}</h1>
+      <slot />
+    </div>
+    <slot name="media" />
+  </div>
+  <img class="swoosh" src="/brand/backgrounds/divider-swoosh-cyan.svg" alt="" width="1440" height="120" />
+</section>

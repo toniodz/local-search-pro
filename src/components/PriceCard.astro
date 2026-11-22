@@ -1,0 +1,21 @@
+---
+import Button from "./Button.astro";
+interface Props {
+  name: string; amount: string; period?: string; setup?: string;
+  includedLabel?: string; items: string[]; ctaHref: string; ctaLabel: string; note?: string;
+}
+const { name, amount, period = "per month + VAT", setup, includedLabel = "Included in your package:", items, ctaHref, ctaLabel, note } = Astro.props;
+---
+<div class="price-card">
+  <div class="price-card__head">
+    <h3 class="h3 price-card__name">{name}</h3>
+    <p class="price-card__amount"><strong>{amount}</strong><span>{period}</span></p>
+    {setup && <p class="price-card__setup"><b>{setup}</b> one-off setup fee + VAT</p>}
+  </div>
+  <div class="price-card__body">
+    <p style="font-weight:700">{includedLabel}</p>
+    <ul class="checklist">{items.map((i) => <li>{i}</li>)}</ul>
+    <Button href={ctaHref} block arrow>{ctaLabel}</Button>
+    {note && <p class="small-print"><em>{note}</em></p>}
+  </div>
+</div>
