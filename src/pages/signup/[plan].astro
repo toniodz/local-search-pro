@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EnquiryForm from "../../components/EnquiryForm.astro";
+import { services } from "../../data/services";
+
+export function getStaticPaths() {
+  const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return services.map((s) => ({ params: { plan: slug(s.planName) }, props: { planName: s.planName } }));
+}
+const { planName } = Astro.props;
+---
+<BaseLayout title={`Get Started with ${planName} | Local Search Pro`} description={`Get started with ${planName}.`} ctaHref="#signup-form" noindex>
+  <section class="section">
+    <div class="container stack" style="gap:32px">
+      <div class="stack" style="max-width:720px"><h1 class="h1">Get Started</h1></div>
+      <div id="signup-form"><EnquiryForm name="signup" plan={planName} /></div>
+    </div>
+  </section>
+</BaseLayout>

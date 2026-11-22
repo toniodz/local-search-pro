@@ -1,14 +1,15 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-// The production domain is never guessed: set SITE_URL (e.g. in Netlify's environment variables).
-// Without it the sitemap, canonical and Open Graph URLs are omitted.
-const site = process.env.SITE_URL || undefined;
+// Production domain. Override with SITE_URL (e.g. for a staging build).
+const site = process.env.SITE_URL || "https://www.localsearchpro.co.uk";
 
 export default defineConfig({
   site,
   output: "static",
   trailingSlash: "always",
   build: { format: "directory" },
-  integrations: site ? [sitemap({ filter: (page) => !page.includes("/components") })] : [],
+  integrations: [
+    sitemap({ filter: (page) => !/\/(components|thank-you|signup)\//.test(page) }),
+  ],
 });

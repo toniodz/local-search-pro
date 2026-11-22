@@ -5,8 +5,7 @@
 export const SITE = {
   name: "Local Search Pro",
   tagline: "Affordable websites and local SEO for UK businesses.",
-  /** Production domain comes from the SITE_URL env var only. It is never guessed. */
-  url: (import.meta.env.SITE_URL as string | undefined) || undefined,
+  url: "https://www.localsearchpro.co.uk",
   legalName: "TODO: legal trading entity",
   email: "TODO: contact email",
   telephone: "TODO: contact telephone",

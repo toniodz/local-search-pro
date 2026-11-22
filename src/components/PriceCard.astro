@@ -9,15 +9,17 @@ interface Props {
   from?: boolean; period?: string; note?: string;
   /** Label above the feature list, e.g. "Your package includes:" */
   includedLabel?: string;
+  /** heading level for the plan name (default h3) */
+  as?: "h2" | "h3";
 }
-const { name, icon, price, setup, features, cta, href, featured = false, from = true, period = "per month + VAT", note, includedLabel } = Astro.props;
+const { name, icon, price, setup, features, cta, href, featured = false, from = true, period = "per month + VAT", note, includedLabel, as: Heading = "h3" } = Astro.props;
 const shown = typeof price === "number" ? `£${price}` : price;
 ---
 <article class:list={["pcard", featured && "pcard--featured"]}>
   <div class="head">
     {featured && <span class="pill">Popular</span>}
     <span class="icon"><Icon name={icon} size={24} /></span>
-    <h3 class="name">{name}</h3>
+    <Heading class="name">{name}</Heading>
     <p class="price">
       {from && <span class="small">From</span>}<span class="amount">{shown}</span><span class="small">{period}</span>
     </p>
@@ -44,6 +46,7 @@ const shown = typeof price === "number" ? `£${price}` : price;
   .features { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; flex: 1; font-size: 15.5px; }
   .features li { display: flex; gap: 10px; }
   .features li::before { content: "✓"; color: var(--success); font-weight: 700; }
+  .body :global(.btn) { white-space: normal; text-align: center; }
   .label { font-weight: 700; margin-bottom: -6px; }
   .note { font-size: 14px; color: var(--ink-3); }
 </style>

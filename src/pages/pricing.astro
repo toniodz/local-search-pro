@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PriceCard from "../components/PriceCard.astro";
+import CTA from "../components/CTA.astro";
+import Button from "../components/Button.astro";
+import { services, setupLine } from "../data/services";
+import { route } from "../config/routes";
+
+// SEO title and description are proposals built only from the approved prices (see report).
+const title = "Packages & Pricing | Local Search Pro";
+const description = "Pay monthly websites from £79, Google Business Profile management from £69, Local SEO from £149 and SEO Growth from £249 per month + VAT.";
+---
+<BaseLayout {title} {description} ctaHref="#packages">
+  <section class="section" id="packages">
+    <div class="container">
+      <div class="split section-head">
+        <div class="stack">
+          <h1 class="h2">Simple, Affordable Monthly Packages</h1>
+          <p class="h3 section-sub">Digital Marketing That Fits Your Business and Your Budget</p>
+        </div>
+        <div class="stack rule-left muted">
+          <p>You shouldn't need a huge marketing budget to have a professional website or improve your visibility online.</p>
+          <p>We've created straightforward monthly packages that give small businesses access to useful digital marketing services at a predictable cost.</p>
+        </div>
+      </div>
+      <div class="plan-grid">
+        {services.map((s) => (
+          <PriceCard as="h2" name={s.planName} icon={s.icon} price={s.price} setup={setupLine(s)} features={s.features}
+            cta={s.cta} href={route(`signup:${s.planName}` as "signup:Website Starter")} featured={s.featured}
+            includedLabel={s.includedLabel} note={s.note} />
+        ))}
+      </div>
+      <div class="stack after-table">
+        <p class="small-print"><em>Setup fees and minimum contract terms may apply. All prices exclude VAT.</em></p>
+      </div>
+    </div>
+  </section>
+  <CTA variant="banner" bleed curve={false} eyebrow="Ready to Get Your Business Found?" eyebrowAs="h2" as="h3" title="Better Visibility Starts Here.">
+    <p class="muted text-pretty">Whether you need a professional new website, help managing your Google Business Profile or affordable ongoing SEO, Local Search Pro makes it easier to get started.</p>
+    <Fragment slot="actions"><Button href={route("contact")} arrow>Ask Us a Question</Button></Fragment>
+  </CTA>
+</BaseLayout>
+<style>
+  .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; align-items: stretch; }
+</style>

@@ -17,16 +17,16 @@ Node 18.20.8+, 20.3+ or 22+. Copy `.env.example` to `.env` and fill in what you 
 
 | Variable | Purpose |
 |---|---|
-| `SITE_URL` | Production domain, e.g. `https://example.co.uk`. Enables canonical and Open Graph URLs, the sitemap and the `robots.txt` sitemap line. **Never guessed**: unset means those are omitted. |
-| `PUBLIC_ROUTE_CONTACT`, `PUBLIC_ROUTE_PRICING` | Destinations for "Get in Touch", "Ask Us a Question" and "View All Packages". Default `#`. |
-| `PUBLIC_ROUTE_SIGNUP_*` | Destination for each "Choose …" button (`WEBSITE_STARTER`, `GOOGLE_PROFILE_CARE`, `LOCAL_SEO_ESSENTIALS`, `SEO_GROWTH`). Default `#`. |
+| `SITE_URL` | Optional override of the production domain (default `https://www.localsearchpro.co.uk`). Drives canonical and Open Graph URLs, the sitemap and `robots.txt`. |
+| `PUBLIC_FORM_ENDPOINT` | Optional. Post the contact and signup forms to your own endpoint. If unset, the forms use Netlify Forms (no backend needed). |
+| `PUBLIC_ROUTE_CONTACT`, `PUBLIC_ROUTE_PRICING`, `PUBLIC_ROUTE_SIGNUP_*` | Optional overrides for the contact, pricing and per-package signup destinations. They default to `/contact/`, `/pricing/` and `/signup/<package>/`. Use them to point at a checkout. |
 
-Unset routes log a warning in the dev server console. See `src/config/routes.ts`.
+See `src/config/routes.ts`.
 `src/config/site.ts` holds organisation details for structured data; `TODO` values are never emitted.
 
 ## Where things live
 
-- `src/pages/`: `/`, `/pay-monthly-websites/`, `/google-business-profile-management/`, `/local-seo/`, `/seo-growth/`, plus `/components/` (dev only: `noindex`, not in the sitemap).
+- `src/pages/`: `/`, `/pay-monthly-websites/`, `/google-business-profile-management/`, `/local-seo/`, `/seo-growth/`, `/pricing/`, `/contact/`, `/signup/` and `/signup/<package>/` (plan preselected, no JS), `/thank-you/`, plus `/components/` (dev only). `/components/`, `/signup/` and `/thank-you/` are `noindex` and not in the sitemap.
 - `src/data/services.ts`: prices, setup fees, terms and package features (single source). `plans.ts` builds PriceCard props and Service JSON-LD from it.
 - `src/components/`: Button, PriceCard, ServiceCard, CTA, Icon, IconTile, Hero, FAQ, Steps, LocalBand, PackageTiles, Header, Footer, Logo.
 - `src/styles/tokens.css` (brand tokens) and `global.css` (layout patterns).

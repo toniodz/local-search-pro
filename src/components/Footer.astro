@@ -1,6 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import { services } from "../data/services";
+import { route } from "../config/routes";
 ---
 <footer class="site-footer">
   <div class="container footer__grid">
@@ -10,6 +11,8 @@ import { services } from "../data/services";
     </div>
     <nav aria-label="Services" class="footer__links">
       {services.map((s) => <a href={s.path}>{s.id === "local-seo" ? "Local SEO" : s.name}</a>)}
+      <a href={route("pricing")}>Pricing</a>
+      <a href={route("contact")}>Contact</a>
     </nav>
     <p class="footer__legal">All prices exclude VAT. No Google rankings, leads or results are guaranteed.</p>
   </div>

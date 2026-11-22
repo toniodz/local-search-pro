@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EnquiryForm from "../components/EnquiryForm.astro";
+
+// SEO title and description are proposals (no approved copy for this page; see report).
+const title = "Contact Local Search Pro";
+const description = "Ask Local Search Pro a question about pay monthly websites, Google Business Profile management or local SEO for your small business.";
+---
+<BaseLayout {title} {description} ctaHref="#contact-form">
+  <section class="section">
+    <div class="container stack" style="gap:32px">
+      <div class="stack" style="max-width:720px">
+        <h1 class="h1">Ask Us a Question</h1>
+        <p class="muted">Local Search Pro — Affordable websites and local SEO for UK businesses.</p>
+      </div>
+      <div id="contact-form"><EnquiryForm name="contact" /></div>
+    </div>
+  </section>
+</BaseLayout>

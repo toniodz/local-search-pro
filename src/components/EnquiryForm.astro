@@ -1,0 +1,64 @@
+---
+import { services } from "../data/services";
+
+/**
+ * Accessible enquiry form. Posts to PUBLIC_FORM_ENDPOINT when set; otherwise it uses
+ * Netlify Forms (the site is hosted on Netlify), which needs no backend or client JS.
+ */
+interface Props {
+  name: "contact" | "signup";
+  /** signup: pre-selected plan name (e.g. "Website Starter") */
+  plan?: string;
+}
+const { name, plan } = Astro.props;
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined;
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+---
+<form
+  class="form"
+  name={name}
+  method="post"
+  action={endpoint || "/thank-you/"}
+  data-netlify={endpoint ? undefined : "true"}
+  netlify-honeypot={endpoint ? undefined : "bot-field"}
+>
+  {!endpoint && <input type="hidden" name="form-name" value={name} />}
+  <p class="visually-hidden" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+  {name === "signup" && (
+    <fieldset class="plans">
+      <legend>Package</legend>
+      {services.map((s) => (
+        <label class="plan">
+          <input type="radio" name="plan" value={s.planName} checked={plan === s.planName} required />
+          <span class="plan__name">{s.planName}</span>
+          <span class="plan__price">£{s.price} per month + VAT</span>
+        </label>
+      ))}
+    </fieldset>
+  )}
+
+  <div class="field"><label for={`${name}-name`}>Your name</label><input id={`${name}-name`} name="name" autocomplete="name" required /></div>
+  {name === "signup" && <div class="field"><label for="signup-business">Business name</label><input id="signup-business" name="business" autocomplete="organization" /></div>}
+  <div class="field"><label for={`${name}-email`}>Email</label><input id={`${name}-email`} name="email" type="email" autocomplete="email" required /></div>
+  <div class="field"><label for={`${name}-phone`}>Phone (optional)</label><input id={`${name}-phone`} name="phone" type="tel" autocomplete="tel" /></div>
+  {name === "signup" && <div class="field"><label for="signup-website">Current website (optional)</label><input id="signup-website" name="website" type="url" autocomplete="url" inputmode="url" /></div>}
+  <div class="field">
+    <label for={`${name}-message`}>{name === "contact" ? "Your question" : "Anything else we should know? (optional)"}</label>
+    <textarea id={`${name}-message`} name="message" required={name === "contact"}></textarea>
+  </div>
+  <div><button class="send" type="submit">{name === "contact" ? "Send message" : "Send signup request"}</button></div>
+</form>
+<style>
+  .plans { border: 0; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; }
+  .plans legend { font-family: var(--font-display); font-weight: 700; font-size: 15px; margin-bottom: 10px; padding: 0; }
+  .plan { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: center; border: 1.5px solid var(--border); border-radius: var(--r-card); padding: 14px 16px; cursor: pointer; background: #fff; }
+  .plan:has(input:checked) { border-color: var(--cyan); background: var(--pale); }
+  .plan:has(input:focus-visible) { outline: 3px solid var(--cyan); outline-offset: 3px; }
+  .plan input { width: 20px; height: 20px; accent-color: var(--navy); margin: 0; }
+  .plan__name { font-family: var(--font-display); font-weight: 700; }
+  .plan__price { grid-column: 2; font-size: 14px; color: var(--ink-3); }
+  .send { display: inline-flex; align-items: center; min-height: 48px; padding: 12.5px 28px; border: 1.5px solid transparent; border-radius: var(--r-btn); background: var(--yellow); color: var(--navy); font: 700 16px var(--font-display); cursor: pointer; transition: background 0.15s; }
+  .send:hover { background: var(--yellow-hover); }
+  .send:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+</style>
