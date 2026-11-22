@@ -1,17 +1,52 @@
 ---
 interface Props {
-  variant?: "primary" | "ghost-dark" | "ghost-light" | "outline-cyan";
+  variant?: "primary" | "secondary" | "dark" | "link" | "ghost-dark" | "outline-cyan";
+  size?: "sm" | "md" | "lg";
   href?: string;
-  block?: boolean;
+  type?: "button" | "submit" | "reset";
   arrow?: boolean;
-  type?: "button" | "submit";
+  disabled?: boolean;
+  fullWidth?: boolean;
   class?: string;
 }
-const { variant = "primary", href, block = false, arrow = false, type = "button", class: className } = Astro.props;
-const cls = ["btn", `btn--${variant}`, block && "btn--block", className].filter(Boolean).join(" ");
+const { variant = "primary", size = "md", href, type = "button", arrow = false, disabled = false, fullWidth = false, class: className } = Astro.props;
+const cls = ["btn", `btn--${variant}`, `btn--${size}`, fullWidth && "btn--full", className];
 ---
-{href ? (
-  <a class={cls} href={href}><slot />{arrow && <span aria-hidden="true">→</span>}</a>
+{href && !disabled ? (
+  <a class:list={cls} href={href}><slot />{arrow && <span aria-hidden="true">→</span>}</a>
 ) : (
-  <button class={cls} type={type}><slot />{arrow && <span aria-hidden="true">→</span>}</button>
+  <button class:list={cls} type={type} disabled={disabled} aria-disabled={disabled ? "true" : undefined}>
+    <slot />{arrow && <span aria-hidden="true">→</span>}
+  </button>
 )}
+<style>
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: var(--font-display); font-weight: 700; text-decoration: none; cursor: pointer;
+    border: 1.5px solid transparent; border-radius: var(--r-btn);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .btn--sm { min-height: 40px; padding: 7.5px 14.5px; font-size: 14px; }
+  .btn--md { min-height: 48px; padding: 12.5px 22.5px; font-size: 16px; }
+  .btn--lg { min-height: 56px; padding: 15.5px 28.5px; font-size: 17px; }
+  .btn--full { display: flex; width: 100%; }
+
+  .btn--primary { background: var(--yellow); color: var(--navy); }
+  .btn--primary:hover { background: var(--yellow-hover); color: var(--navy); }
+  .btn--secondary { border-color: var(--cyan-text); color: var(--cyan-text); background: transparent; }
+  .btn--secondary:hover { background: var(--cyan-text); color: #fff; }
+  .btn--dark { background: var(--navy); color: #fff; }
+  .btn--dark:hover { background: var(--navy-hover); color: #fff; }
+  .btn--ghost-dark { border-color: #fff; color: #fff; background: transparent; }
+  .btn--ghost-dark:hover { background: #fff; color: var(--navy); }
+  .btn--outline-cyan { border-color: var(--cyan); color: #fff; background: transparent; }
+  .btn--outline-cyan:hover { background: var(--cyan); color: var(--navy); }
+  .btn--link { color: var(--cyan-text); text-decoration: underline; text-underline-offset: 4px; padding-left: 0; padding-right: 0; min-height: 44px; background: transparent; }
+  .btn--link:hover { color: var(--navy); }
+
+  .btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+  .btn:disabled, .btn[aria-disabled="true"] {
+    background: var(--disabled-bg); color: var(--disabled-text); border-color: transparent;
+    cursor: not-allowed; text-decoration: none;
+  }
+</style>

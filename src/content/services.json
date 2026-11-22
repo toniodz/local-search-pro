@@ -1,6 +1,0 @@
-[
-  { "id": "websites", "name": "Pay Monthly Websites", "href": "/websites", "price": 79, "icon": "laptop", "tagline": "A professional website without the big upfront cost.", "bullets": ["Modern, mobile-friendly design", "Up to five pages", "Fast, secure hosting", "Contact forms and enquiries", "Basic search engine optimisation"] },
-  { "id": "google-business-profile", "name": "Google Business Profile Management", "href": "/google-business-profile", "price": 69, "icon": "pin", "tagline": "Make a better impression when customers find you on Google.", "bullets": ["Profile optimisation and setup", "Two Google updates per month", "Business information management", "Review response guidance", "Performance monitoring"] },
-  { "id": "local-seo", "name": "Local SEO", "href": "/local-seo", "price": 149, "icon": "chart", "tagline": "Help more local customers discover your business.", "bullets": ["Local keyword research", "Website optimisation", "Google Business Profile care", "Search performance tracking", "Monthly reporting"] },
-  { "id": "seo-growth", "name": "SEO Growth", "href": "/seo-growth", "price": 249, "icon": "chart", "tagline": "TODO: copy", "bullets": ["TODO: copy"] }
-]

@@ -1,0 +1,184 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Logo from "../components/Logo.astro";
+import Button from "../components/Button.astro";
+import PriceCard from "../components/PriceCard.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Icon from "../components/Icon.astro";
+import IconTile from "../components/IconTile.astro";
+import CTA from "../components/CTA.astro";
+import icons from "../data/icons.json";
+import { services } from "../data/services";
+import type { IconName } from "../data/services";
+
+const iconLabels: Record<string, string> = {
+  "pay-monthly-websites": "Pay Monthly Websites", "google-business-profile": "Google Business Profile", "local-seo": "Local SEO",
+  "seo-growth": "SEO Growth", "website-hosting": "Website Hosting", reporting: "Reporting", "customer-support": "Customer Support",
+  "online-enquiries": "Online Enquiries", "business-growth": "Business Growth", location: "Location & Maps",
+};
+const iconNames = Object.keys(icons) as IconName[];
+---
+<BaseLayout bare noindex title="Components | Local Search Pro" description="Internal component library for the Local Search Pro website.">
+  <header class="lib-head">
+    <div class="wrap head-inner">
+      <Logo />
+      <div class="head-text">
+        <p class="eyebrow">Website component library · v1.0</p>
+        <h1 class="lib-h1">Components</h1>
+        <p class="lead">Buttons, pricing cards, service cards, icons and CTA sections for the Local Search Pro website. Each one is labelled with the Astro component name it maps to.</p>
+      </div>
+      <nav class="lib-nav" aria-label="Sections">
+        <a href="#buttons">Buttons</a><a href="#pricing">Pricing cards</a><a href="#services">Service cards</a><a href="#icons">Icons</a><a href="#cta">CTA sections</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap lib-main">
+    <section id="buttons" class="sec">
+      <div class="sec-head"><h2>Buttons</h2><code>&lt;Button variant size href arrow /&gt;</code></div>
+      <div class="two">
+        <div class="panel">
+          <p class="label">On light</p>
+          <div class="row">
+            <Button href="#buttons" arrow>Get Started</Button>
+            <Button variant="secondary" href="#buttons" arrow>Explore Websites</Button>
+            <Button variant="dark" href="#buttons">Ask Us a Question</Button>
+            <Button variant="link" href="#buttons" arrow>Learn more</Button>
+          </div>
+          <div class="legend">
+            <span><strong>primary</strong>Yellow · one per view</span><span><strong>secondary</strong>Cyan Text outline</span>
+            <span><strong>dark</strong>Navy fill</span><span><strong>link</strong>Underlined text</span>
+          </div>
+        </div>
+        <div class="panel panel--dark on-dark">
+          <p class="label">On navy</p>
+          <div class="row">
+            <Button href="#buttons" arrow>Get Your Website</Button>
+            <Button variant="ghost-dark" href="#buttons">Ask Us a Question</Button>
+            <Button variant="outline-cyan" href="#buttons" arrow>Explore Local SEO</Button>
+          </div>
+          <div class="legend legend--dark">
+            <span><strong>primary</strong>Yellow</span><span><strong>ghost-dark</strong>White outline</span><span><strong>outline-cyan</strong>Cross-sell links</span>
+          </div>
+        </div>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <p class="label">Sizes</p>
+          <div class="row">
+            <Button size="sm" href="#buttons">Small · 40px</Button>
+            <Button size="md" href="#buttons">Medium · 48px</Button>
+            <Button size="lg" href="#buttons">Large · 56px</Button>
+          </div>
+          <p class="note">Use small only in the header nav. On mobile, primary buttons in CTA sections go full width.</p>
+        </div>
+        <div class="panel">
+          <p class="label">States · primary</p>
+          <div class="row states">
+            <span class="state"><Button href="#buttons">Get Started</Button>Default</span>
+            <span class="state demo-hover"><Button href="#buttons">Get Started</Button>Hover #FFF066</span>
+            <span class="state demo-focus"><Button href="#buttons">Get Started</Button>Focus ring</span>
+            <span class="state"><Button disabled>Get Started</Button>Disabled</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="sec">
+      <div class="sec-head"><h2>Pricing cards</h2><code>&lt;PriceCard name icon price setup features cta href featured /&gt;</code></div>
+      <div class="grid4 equal">
+        {services.map((s) => (
+          <PriceCard name={s.name} icon={s.icon} price={s.price} setup={s.setup} features={s.features} cta={s.cta} href="#pricing" featured={s.featured} />
+        ))}
+      </div>
+      <p class="note">Website Starter and the features on the next two cards come from your copy and homepage mockup. SEO Growth features and any setup fees other than Website Starter's are placeholders marked TODO. The "Popular" badge is optional (<code>featured</code>).</p>
+    </section>
+
+    <section id="services" class="sec">
+      <div class="sec-head"><h2>Service cards</h2><code>&lt;ServiceCard icon title summary price href variant /&gt;</code></div>
+      <div class="grid4">
+        {services.map((s) => <ServiceCard icon={s.icon} title={s.name} summary={s.summary} price={s.price} href="#services" linkLabel={s.linkLabel} />)}
+      </div>
+      <div class="navy-wrap on-dark">
+        {services.map((s) => <ServiceCard variant="compact" icon={s.icon} title={s.name} summary={s.summary} price={s.price} href="#services" />)}
+      </div>
+      <p class="note">Compact variant (<code>variant="compact"</code>) for navy sections, footers and cross-sell rows.</p>
+    </section>
+
+    <section id="icons" class="sec">
+      <div class="sec-head"><h2>Icons</h2><code>&lt;Icon name size /&gt; · &lt;IconTile name tone /&gt;</code></div>
+      <div class="icons">
+        {iconNames.map((n) => (
+          <div class="icon-cell">
+            <span class="tiles"><IconTile name={n} tone="light" /><IconTile name={n} tone="dark" /></span>
+            <span class="icon-label">{iconLabels[n]}</span>
+          </div>
+        ))}
+      </div>
+      <p class="note">24px grid, 2px stroke, round caps and joins, outline only. The icons use <code>currentColor</code>, so they are inlined and coloured with CSS: navy on light, cyan on navy. Tiles are 48px with a 14px radius.</p>
+    </section>
+
+    <section id="cta" class="sec">
+      <div class="sec-head"><h2>CTA sections</h2><code>&lt;CTA variant="banner" | "band" | "inline" /&gt;</code></div>
+      <p class="label">banner · end of page</p>
+      <CTA variant="banner" eyebrow="Ready for a Better Business Website?" title="Get Online Without the Big Upfront Cost"
+        text="Give your business a professional website that helps customers understand what you offer and makes it easy for them to contact you."
+        primary={{ label: "Get Your Website", href: "#cta" }} secondary={{ label: "Ask Us a Question", href: "#cta" }} as="h3" />
+      <p class="label gap">band · cross-sell between sections</p>
+      <CTA variant="band" title="Need more customers to find your business through Google?"
+        text="Our Local SEO packages can help improve your visibility in relevant local searches."
+        primary={{ label: "Explore Local SEO", href: "#cta" }} as="h3" />
+      <p class="label gap">inline · light pages, under content</p>
+      <CTA variant="inline" title="Websites from £79 per month + VAT." text="Design, hosting and maintenance included."
+        primary={{ label: "Get Started", href: "#cta" }} secondary={{ label: "Ask Us a Question", href: "#cta" }} as="h3" />
+    </section>
+
+    <footer class="lib-foot">
+      <Logo tone="on-light" class="foot-logo" />
+      <span class="note">Internal page · not indexed</span>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .lib-head { background: var(--navy) url("/brand/backgrounds/map-navy.svg") center/cover; color: #fff; }
+  .head-inner { padding-top: 40px; padding-bottom: 56px; display: flex; flex-direction: column; gap: 28px; }
+  .head-inner > :global(img) { height: 44px; width: auto; align-self: flex-start; }
+  .head-text { display: flex; flex-direction: column; gap: 8px; }
+  .head-text .eyebrow { color: var(--cyan); }
+  .lib-h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.05; letter-spacing: -0.025em; }
+  .lead { color: var(--on-dark-2); max-width: 640px; text-wrap: pretty; }
+  .lib-nav { display: flex; gap: 8px 20px; flex-wrap: wrap; font: 600 14px var(--font-display); }
+  .lib-nav a { color: #fff; text-decoration: none; padding: 10px 0; }
+  .lib-nav a:hover { text-decoration: underline; }
+  .lib-main { padding-top: 72px; display: flex; flex-direction: column; gap: 96px; }
+  .sec { display: flex; flex-direction: column; gap: 28px; scroll-margin-top: 16px; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  .sec-head h2 { font-family: var(--font-display); font-weight: 800; font-size: 32px; letter-spacing: -0.02em; }
+  .sec-head code { font-size: 14px; color: var(--ink-3); }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 20px; }
+  .panel { border: 1px solid var(--border); border-radius: var(--r-card); padding: 28px; display: flex; flex-direction: column; gap: 22px; background: #fff; }
+  .panel--dark { background: var(--navy); border-color: var(--navy); }
+  .label { font: 700 13px var(--font-display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan-text); }
+  .panel--dark .label { color: var(--cyan); }
+  .label.gap { margin-top: 12px; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; font-size: 13px; color: var(--ink-3); }
+  .legend strong { display: block; color: var(--navy); }
+  .legend--dark { color: var(--on-dark-2); }
+  .legend--dark strong { color: #fff; }
+  .note { font-size: 14px; color: var(--ink-3); text-wrap: pretty; }
+  .states { gap: 16px; align-items: flex-end; }
+  .state { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--ink-3); }
+  .demo-hover :global(.btn) { background: var(--yellow-hover) !important; }
+  .demo-focus :global(.btn) { outline: 3px solid var(--cyan); outline-offset: 3px; }
+  .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; align-items: stretch; }
+  .navy-wrap { background: var(--navy); border-radius: var(--r-feature); padding: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px; }
+  .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .icon-cell { border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px 14px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .tiles { display: flex; gap: 10px; }
+  .icon-label { font-size: 13px; line-height: 1.35; color: var(--ink-2); }
+  .lib-foot { border-top: 1px solid var(--border); padding: 28px 0 56px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .lib-foot :global(.foot-logo) { height: 34px; width: auto; }
+</style>

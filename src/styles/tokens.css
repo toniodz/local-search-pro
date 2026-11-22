@@ -7,12 +7,16 @@
   --cyan: #05b9f2; /* accents/links/icons on navy ONLY */
   --cyan-deep: #0590cc; /* large text & logo on light */
   --cyan-text: #0077b0; /* links, eyebrows, small text on light (4.9:1) */
+  --cyan-text-on-pale: #00729f; /* same role on Pale Blue #EAF6FD (4.89:1) */
   --charcoal: #303030;
   --pale: #eaf6fd;
   --white: #ffffff;
   --surface: #f4f8fb;
   --border: #dce5ee;
   --footer-bg: #0b1d2f;
+  --navy-hover: #1c3a57;
+  --disabled-bg: #e6ebf0;
+  --disabled-text: #7a8a9a;
   --success: #1f8a3a;
 
   /* Text */

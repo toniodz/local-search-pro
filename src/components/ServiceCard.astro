@@ -1,0 +1,42 @@
+---
+import Icon from "./Icon.astro";
+import IconTile from "./IconTile.astro";
+import type { IconName } from "../data/services";
+interface Props {
+  icon: IconName; title: string; summary: string; price: number | string; href: string;
+  variant?: "default" | "compact"; linkLabel?: string;
+}
+const { icon, title, summary, price, href, variant = "default", linkLabel } = Astro.props;
+const shown = typeof price === "number" ? `£${price}` : price;
+---
+{variant === "compact" ? (
+  <a class="compact" href={href}>
+    <span class="c-icon"><Icon name={icon} size={24} /></span>
+    <span class="c-text"><strong>{title}</strong><span>From {shown}/month + VAT</span></span>
+  </a>
+) : (
+  <a class="default" href={href}>
+    <IconTile name={icon} size={52} />
+    <h3>{title}</h3>
+    <p class="summary">{summary}</p>
+    <p class="price">From <strong>{shown}</strong> per month + VAT</p>
+    <span class="link">{linkLabel ?? `Explore ${title}`} <span aria-hidden="true">→</span></span>
+  </a>
+)}
+<style>
+  a { text-decoration: none; }
+  .default { color: var(--navy); background: #fff; border: 1px solid var(--border); border-radius: var(--r-card); padding: 26px; display: flex; flex-direction: column; gap: 14px; height: 100%; transition: border-color 0.15s, box-shadow 0.15s; }
+  .default:hover { border-color: var(--cyan); box-shadow: 0 14px 34px -20px rgba(16, 40, 63, 0.4); color: var(--navy); }
+  .default h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.25; }
+  .summary { color: var(--ink-3); font-size: 16px; flex: 1; text-wrap: pretty; }
+  .price { font-size: 15px; color: var(--ink-2); }
+  .price strong { font-family: var(--font-display); font-size: 20px; color: var(--navy); }
+  .link { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--cyan-text); }
+
+  .compact { color: #fff; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: var(--r-card); padding: 22px; display: flex; gap: 14px; align-items: flex-start; height: 100%; transition: background 0.15s; }
+  .compact:hover { background: rgba(255, 255, 255, 0.09); color: #fff; }
+  .c-icon { flex: none; margin-top: 2px; color: var(--cyan); display: flex; }
+  .c-text { display: flex; flex-direction: column; gap: 4px; }
+  .c-text strong { font-family: var(--font-display); font-size: 17px; }
+  .c-text span { font-size: 14px; color: var(--on-dark-2); }
+</style>

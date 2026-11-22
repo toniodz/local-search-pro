@@ -16,8 +16,11 @@ interface Props {
   ctaHref?: string;
   /** Extra JSON-LD (e.g. a Service) */
   jsonLd?: Record<string, unknown>;
+  /** Dev-only pages: noindex, and bare = no site header/footer */
+  noindex?: boolean;
+  bare?: boolean;
 }
-const { title, description, ogImage = "/brand/logos/png/lsp-tagline-on-dark.png", ctaHref, jsonLd } = Astro.props;
+const { title, description, ogImage = "/brand/logos/png/lsp-tagline-on-dark.png", ctaHref, jsonLd, noindex = false, bare = false } = Astro.props;
 const site = Astro.site!;
 const canonical = new URL(Astro.url.pathname.replace(/(\.html|\/)$/, "") || "/", site).href;
 const ogUrl = new URL(ogImage, site).href;
@@ -38,6 +41,7 @@ const business = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/brand/logos/favicon/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/brand/logos/favicon/favicon-32.png" sizes="32x32" type="image/png" />
@@ -58,8 +62,12 @@ const business = {
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header ctaHref={ctaHref} />
-    <main id="main"><slot /></main>
-    <Footer />
+    {bare ? <slot /> : (
+      <>
+        <Header ctaHref={ctaHref} />
+        <main id="main"><slot /></main>
+        <Footer />
+      </>
+    )}
   </body>
 </html>

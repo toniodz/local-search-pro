@@ -1,16 +1,102 @@
 ---
-interface Props { eyebrow?: string; title: string }
-const { eyebrow, title } = Astro.props;
+import Button from "./Button.astro";
+interface Action { label: string; href: string; arrow?: boolean }
+interface Props {
+  variant?: "banner" | "band" | "inline";
+  eyebrow?: string; title: string; text?: string;
+  primary?: Action; secondary?: Action;
+  /** banner only: full-width page-end section with the top curve */
+  bleed?: boolean;
+  as?: "h2" | "h3";
+}
+const { variant = "banner", eyebrow, title, text, primary, secondary, bleed = false, as: Heading = "h2" } = Astro.props;
+const hasSlot = Astro.slots.has("default");
+const hasActions = Astro.slots.has("actions");
 ---
-<section class="cta on-dark">
-  <svg class="cta__curve" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V0 C 1000 70, 400 70, 0 20 Z" fill="#fff" /></svg>
-  <img class="cta__symbol" src="/brand/logos/svg/lsp-symbol-on-dark.svg" alt="" width="100" height="100" />
-  <div class="container">
-    <div class="cta__inner">
+{variant === "banner" && (
+  <section class:list={["banner", "on-dark", bleed && "banner--bleed"]}>
+    {bleed && <svg class="curve" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V0 C 1000 70, 400 70, 0 20 Z" fill="#fff" /></svg>}
+    <img class="symbol" src="/brand/logos/svg/lsp-symbol-on-dark.svg" alt="" width="100" height="100" />
+    <div class:list={[bleed && "container"]}>
+      <div class="banner__inner">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <Heading class="banner__title">{title}</Heading>
+        {text && <p class="text">{text}</p>}
+        {hasSlot && <slot />}
+        <div class="actions">
+          {hasActions ? <slot name="actions" /> : (<>
+            {primary && <Button href={primary.href} size="md" arrow={primary.arrow ?? true}>{primary.label}</Button>}
+            {secondary && <Button variant="ghost-dark" href={secondary.href}>{secondary.label}</Button>}
+          </>)}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+{variant === "band" && (
+  <div class="band on-dark">
+    <div>
       {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      <h2 class="h1 cta__title">{title}</h2>
-      <slot />
-      <div class="btn-row" style="margin-top:8px"><slot name="actions" /></div>
+      <Heading class="band__title">{title}</Heading>
+    </div>
+    <div class="band__side">
+      {text && <p class="text">{text}</p>}
+      {hasSlot && <slot />}
+      {primary && <Button variant="outline-cyan" href={primary.href} arrow={primary.arrow ?? true}>{primary.label}</Button>}
     </div>
   </div>
-</section>
+)}
+{variant === "inline" && (
+  <div class="inline">
+    <div class="inline__lead">
+      <img src="/brand/logos/svg/lsp-symbol-on-light.svg" alt="" width="52" height="52" />
+      <div class="inline__text">
+        <Heading class="inline__title">{title}</Heading>
+        {text && <p>{text}</p>}
+        {hasSlot && <slot />}
+      </div>
+    </div>
+    <div class="actions">
+      {primary && <Button href={primary.href} arrow={primary.arrow ?? true}>{primary.label}</Button>}
+      {secondary && <Button variant="secondary" href={secondary.href}>{secondary.label}</Button>}
+    </div>
+  </div>
+)}
+<style>
+  .banner, .band { background: var(--navy) url("/brand/backgrounds/map-navy.svg") center/cover; color: #fff; }
+  .banner { position: relative; border-radius: var(--r-feature); overflow: hidden; }
+  .banner__inner { position: relative; padding: 64px 48px; display: flex; flex-direction: column; gap: 14px; max-width: 680px; }
+  .banner :global(.banner__title) { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance; }
+  .symbol { position: absolute; right: -60px; bottom: -100px; width: 340px; height: auto; pointer-events: none; }
+  .text { color: var(--on-dark-2); text-wrap: pretty; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .banner--bleed { border-radius: 0; }
+  .banner--bleed .banner__inner { padding: 110px 0 96px; gap: 16px; max-width: 720px; }
+  .banner--bleed :global(.banner__title) { font-size: clamp(36px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -0.025em; }
+  .banner--bleed .symbol { right: -70px; bottom: -110px; width: 380px; }
+  .curve { position: absolute; top: -1px; left: 0; width: 100%; height: 60px; }
+
+  .band { border-radius: var(--r-feature); padding: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 28px; align-items: center; }
+  .band :global(.band__title) { font-family: var(--font-display); font-weight: 800; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; }
+  .band__side { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+
+  .inline { background: var(--pale); border-radius: var(--r-feature); padding: 32px 36px; display: flex; justify-content: space-between; align-items: center; gap: 20px 32px; flex-wrap: wrap; }
+  .inline__lead { display: flex; align-items: center; gap: 18px; }
+  .inline__lead img { width: 52px; height: 52px; flex: none; }
+  .inline__text { display: flex; flex-direction: column; gap: 2px; }
+  .inline :global(.inline__title) { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+  .inline__text p { color: var(--ink-2); font-size: 16px; }
+  .inline .actions { margin-top: 0; }
+  .inline .actions :global(.btn--secondary) { color: var(--cyan-text-on-pale); border-color: var(--cyan-text-on-pale); }
+  .inline .actions :global(.btn--secondary:hover) { background: var(--cyan-text-on-pale); color: #fff; }
+
+  @media (max-width: 640px) {
+    .banner:not(.banner--bleed) .banner__inner { padding: 44px 24px; }
+    .band { padding: 32px 24px; }
+    .inline { padding: 28px 24px; }
+    .symbol { width: 220px; right: -60px; bottom: -80px; opacity: 0.6; }
+    .actions { flex-direction: column; width: 100%; }
+    .actions :global(.btn), .band__side :global(.btn) { width: 100%; justify-content: center; }
+    .band__side { align-items: stretch; }
+  }
+</style>

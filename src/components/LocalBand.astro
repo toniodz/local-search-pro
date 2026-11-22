@@ -5,16 +5,19 @@ const { title, panelTitle, panelText, ctaHref, ctaLabel } = Astro.props;
 ---
 <section style="padding-bottom:var(--section)">
   <div class="container">
-    <div class="band on-dark">
+    <div class="local-band on-dark">
       <div class="stack">
-        <h2 class="h2 band__title">{title}</h2>
+        <h2 class="h2 local-band__title">{title}</h2>
         <slot />
       </div>
-      <div class="band__panel">
-        <p class="band__panel-title">{panelTitle}</p>
+      <div class="local-band__panel">
+        <p class="local-band__panel-title">{panelTitle}</p>
         <p class="muted">{panelText}</p>
-        <Button variant="outline-cyan" href={ctaHref} arrow>{ctaLabel}</Button>
+        <Button variant="outline-cyan" href={ctaHref} arrow class="band-btn">{ctaLabel}</Button>
       </div>
     </div>
   </div>
 </section>
+<style>
+  .band-btn { margin-top: 8px; }
+</style>

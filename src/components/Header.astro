@@ -22,7 +22,7 @@ const links = [
     </button>
     <nav class="nav" id="site-nav" aria-label="Main">
       {links.map((l) => <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>)}
-      <Button href={ctaHref}>Get Started</Button>
+      <Button href={ctaHref} size="sm" class="nav-cta">Get Started</Button>
     </nav>
   </div>
 </header>

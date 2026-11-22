@@ -1,0 +1,13 @@
+---
+import Icon from "./Icon.astro";
+import type { IconName } from "../data/services";
+interface Props { name: IconName; tone?: "light" | "dark"; size?: number; label?: string }
+const { name, tone = "light", size = 48, label } = Astro.props;
+const iconSize = Math.round(size / 2);
+---
+<span class={`tile tile--${tone}`} style={`--tile:${size}px`}><Icon {name} size={iconSize} {label} /></span>
+<style>
+  .tile { flex: none; width: var(--tile); height: var(--tile); border-radius: 14px; display: grid; place-items: center; }
+  .tile--light { background: var(--pale); color: var(--navy); }
+  .tile--dark { background: var(--navy); color: var(--cyan); }
+</style>

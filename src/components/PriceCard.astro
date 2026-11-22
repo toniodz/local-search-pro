@@ -1,21 +1,45 @@
 ---
+import Icon from "./Icon.astro";
 import Button from "./Button.astro";
+import type { IconName } from "../data/services";
 interface Props {
-  name: string; amount: string; period?: string; setup?: string;
-  includedLabel?: string; items: string[]; ctaHref: string; ctaLabel: string; note?: string;
+  name: string; icon: IconName; price: number | string; setup?: string;
+  features: string[]; cta: string; href: string; featured?: boolean;
+  /** Show the "From" prefix (default true) */
+  from?: boolean; period?: string; note?: string;
 }
-const { name, amount, period = "per month + VAT", setup, includedLabel = "Included in your package:", items, ctaHref, ctaLabel, note } = Astro.props;
+const { name, icon, price, setup, features, cta, href, featured = false, from = true, period = "per month + VAT", note } = Astro.props;
+const shown = typeof price === "number" ? `£${price}` : price;
 ---
-<div class="price-card">
-  <div class="price-card__head">
-    <h3 class="h3 price-card__name">{name}</h3>
-    <p class="price-card__amount"><strong>{amount}</strong><span>{period}</span></p>
-    {setup && <p class="price-card__setup"><b>{setup}</b> one-off setup fee + VAT</p>}
+<article class:list={["pcard", featured && "pcard--featured"]}>
+  <div class="head">
+    {featured && <span class="pill">Popular</span>}
+    <span class="icon"><Icon name={icon} size={24} /></span>
+    <h3 class="name">{name}</h3>
+    <p class="price">
+      {from && <span class="small">From</span>}<span class="amount">{shown}</span><span class="small">{period}</span>
+    </p>
+    {setup && <p class="small">{setup}</p>}
   </div>
-  <div class="price-card__body">
-    <p style="font-weight:700">{includedLabel}</p>
-    <ul class="checklist">{items.map((i) => <li>{i}</li>)}</ul>
-    <Button href={ctaHref} block arrow>{ctaLabel}</Button>
-    {note && <p class="small-print"><em>{note}</em></p>}
+  <div class="body">
+    <ul class="features">{features.map((f) => <li>{f}</li>)}</ul>
+    <Button href={href} fullWidth arrow>{cta}</Button>
+    {note && <p class="note"><em>{note}</em></p>}
   </div>
-</div>
+</article>
+<style>
+  .pcard { background: #fff; border: 1px solid var(--border); border-radius: var(--r-feature); overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 20px 50px -28px rgba(16, 40, 63, 0.35); }
+  .pcard--featured { border: 2px solid var(--cyan); }
+  .head { background: var(--navy); color: #fff; padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 10px; position: relative; }
+  .pill { position: absolute; top: 18px; right: 18px; background: var(--cyan); color: var(--navy); font: 700 11px var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
+  .icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(5, 185, 242, 0.14); color: var(--cyan); display: grid; place-items: center; }
+  .name { font-family: var(--font-display); font-weight: 700; font-size: 19px; line-height: 1.25; text-wrap: balance; }
+  .price { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+  .amount { font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 1; letter-spacing: -0.03em; color: var(--yellow); }
+  .small { font-size: 14px; color: var(--on-dark-2); }
+  .body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .features { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; flex: 1; font-size: 15.5px; }
+  .features li { display: flex; gap: 10px; }
+  .features li::before { content: "✓"; color: var(--success); font-weight: 700; }
+  .note { font-size: 14px; color: var(--ink-3); }
+</style>

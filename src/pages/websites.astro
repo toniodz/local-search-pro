@@ -87,9 +87,9 @@ const jsonLd = {
         <p class="muted text-pretty">Your monthly subscription includes website hosting, maintenance and the agreed ongoing support.</p>
       </div>
       <PriceCard
-        name="Website Starter" amount="£79" setup="£149"
-        items={["Up to five professionally designed pages", "Mobile-friendly layouts", "Contact form", "Basic on-page SEO", "SSL certificate", "Hosting and backups", "Limited ongoing content amendments"]}
-        ctaHref="/signup?plan=website-starter" ctaLabel="Choose Website Starter"
+        name="Website Starter" icon="pay-monthly-websites" price={79} from={false} setup="£149 one-off setup fee + VAT"
+        features={["Up to five professionally designed pages", "Mobile-friendly layouts", "Contact form", "Basic on-page SEO", "SSL certificate", "Hosting and backups", "Limited ongoing content amendments"]}
+        href="/signup?plan=website-starter" cta="Choose Website Starter"
         note="Minimum 24-month agreement. Additional pages, advanced features and larger content changes are quoted separately."
       />
     </div>
@@ -121,9 +121,9 @@ const jsonLd = {
     </div>
   </section>
 
-  <CTA eyebrow="Ready for a Better Business Website?" title="Get Online Without the Big Upfront Cost">
-    <p class="muted text-pretty">Give your business a professional website that helps customers understand what you offer and makes it easy for them to contact you.</p>
-    <p class="muted text-pretty">With affordable monthly pricing and ongoing technical support, getting started couldn't be simpler.</p>
+  <CTA variant="banner" bleed eyebrow="Ready for a Better Business Website?" title="Get Online Without the Big Upfront Cost">
+    <p class="text-pretty" style="color:var(--on-dark-2)">Give your business a professional website that helps customers understand what you offer and makes it easy for them to contact you.</p>
+    <p class="text-pretty" style="color:var(--on-dark-2)">With affordable monthly pricing and ongoing technical support, getting started couldn't be simpler.</p>
     <p class="hero__price">Websites from <strong>£79 per month</strong> + VAT.</p>
     <Fragment slot="actions">
       <Button href="/signup?plan=website-starter" arrow>Get Your Website</Button>
