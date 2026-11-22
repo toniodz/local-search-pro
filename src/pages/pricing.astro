@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PriceCard from "../components/PriceCard.astro";
+import CTA from "../components/CTA.astro";
+import { services } from "../data/services";
+---
+<BaseLayout title="Pricing | Local Search Pro" description="Simple monthly pricing for websites, Google Business Profile management and Local SEO. All prices exclude VAT.">
+  <section class="section">
+    <div class="container">
+      <div class="stack" style="max-width:720px;margin-bottom:48px">
+        <p class="eyebrow">Pricing</p>
+        <h1 class="h1">Simple Monthly Pricing</h1>
+        <p class="todo">TODO: copy</p>
+      </div>
+      <div class="grid">
+        {services.map((s) => <PriceCard name={s.name} icon={s.icon} price={s.price} setup={s.setup} features={s.features} cta={s.cta} href={s.href} featured={s.featured} />)}
+      </div>
+      <p class="small-note">All prices exclude VAT.</p>
+    </div>
+  </section>
+  <section class="section section--pale"><div class="container"><CTA variant="inline" title="Not sure which package suits you?" text="TODO: copy" primary={{ label: "Ask Us a Question", href: "/contact" }} /></div></section>
+</BaseLayout>
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; align-items: stretch; }
+  .small-note { margin-top: 20px; font-size: 14px; color: var(--ink-3); }
+</style>

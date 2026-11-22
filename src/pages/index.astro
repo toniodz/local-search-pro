@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Icon from "../components/Icon.astro";
+import IconTile from "../components/IconTile.astro";
+import CTA from "../components/CTA.astro";
+import { services } from "../data/services";
+import type { IconName } from "../data/services";
+
+const why: { icon: IconName; title: string; text: string }[] = [
+  { icon: "business-growth", title: "Affordable Pricing", text: "Clear, fixed monthly plans with no hidden extras." },
+  { icon: "google-business-profile", title: "Designed for Small Businesses", text: "Practical, effective services for local and independent businesses." },
+  { icon: "customer-support", title: "Real Support", text: "A friendly, UK-based team with straightforward advice." },
+  { icon: "pay-monthly-websites", title: "Websites That Work", text: "Professional, mobile-friendly websites that get results." },
+  { icon: "location", title: "Local Search Expertise", text: "Focused on helping you get found by customers in your area." },
+  { icon: "reporting", title: "Clear Reporting", text: "Straightforward updates so you can see what's being done." },
+];
+const title = "Websites, Local SEO & Google Business Profile | Local Search Pro";
+const description = "Affordable pay monthly websites, Local SEO and Google Business Profile management for UK small businesses. Websites from £79 per month + VAT.";
+---
+<BaseLayout {title} {description}>
+  <Hero title="Helping You Get Found Online">
+    <p class="h3" style="font-size:clamp(20px,2.4vw,26px)">Websites | Local SEO | Google Business Profile</p>
+    <p class="muted text-pretty" style="max-width:540px">Affordable websites and local SEO for small businesses. We help make sure your business can be found on Google, attract more local customers and get more enquiries.</p>
+    <div class="btn-row">
+      <Button href="/pricing" arrow>Explore Our Packages</Button>
+      <Button variant="ghost-dark" href="/contact">Get in Touch</Button>
+    </div>
+    <ul class="ticks"><li>Professional websites</li><li>Affordable monthly plans</li><li>UK-based support</li></ul>
+    <div slot="media" class="hero__media">Laptop + phone mockup (hero graphic, to be supplied)</div>
+  </Hero>
+
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <h2 class="h2">Everything Your Business Needs to Get Found Online</h2>
+        <p class="rule-left muted text-pretty">From a professional website to a fully optimised Google Business Profile and ongoing local SEO, we provide straightforward, affordable solutions that help your business grow.</p>
+      </div>
+      <div class="svc-grid">
+        {services.slice(0, 3).map((s) => (
+          <ServiceCard icon={s.icon} title={s.name} summary={s.summary} price={s.price} href={`/${s.id === "websites" ? "websites" : s.id}`} linkLabel={s.linkLabel} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--pale">
+    <div class="container split">
+      <div class="stack">
+        <h2 class="h2">Why Choose Local Search Pro?</h2>
+        <p class="muted text-pretty">We make it easy for small businesses to get online, improve their visibility and attract more customers.</p>
+      </div>
+      <div class="why-icons">
+        {why.map((w) => (
+          <div class="why-item"><IconTile name={w.icon} tone="light" /><h3 class="h3">{w.title}</h3><p>{w.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA variant="banner" bleed title="Ready to Get Your Business Found?" text="Explore our affordable packages and find the right solution for your business."
+    primary={{ label: "View Our Packages", href: "/pricing" }} secondary={{ label: "Ask Us a Question", href: "/contact" }} />
+</BaseLayout>
+
+<style>
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; margin-top: 40px; }
+  .why-icons { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 32px 28px; }
+  .why-item { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .why-item p { color: var(--ink-3); font-size: 16px; }
+</style>

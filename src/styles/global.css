@@ -135,7 +135,8 @@ a:hover { color: var(--navy); }
 .field label { font-family: var(--font-display); font-weight: 700; font-size: 15px; }
 .field input, .field select, .field textarea { font: inherit; min-height: 48px; padding: 12px 14px; border: 1.5px solid #8a9bad; border-radius: var(--r-btn); background: #fff; color: var(--ink); }
 .field textarea { min-height: 140px; resize: vertical; }
-.todo { border: 1.5px dashed var(--cyan-text); border-radius: var(--r-card); padding: 14px 18px; color: var(--cyan-text); font-weight: 500; background: var(--pale); }
+.todo { border: 1.5px dashed var(--cyan-text); border-radius: var(--r-card); padding: 14px 18px; color: var(--cyan-text-on-pale); font-weight: 500; background: var(--pale); }
+.on-dark .todo { color: #fff; background: rgba(255, 255, 255, 0.08); border-color: var(--cyan); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
