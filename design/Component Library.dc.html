@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fff;color:#10283F;font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0077B0}
+a:hover{color:#10283F}
+h1,h2,h3,h4,p,ul{margin:0}
+</style>
+</helmet>
+
+<div>
+<header style="background:#10283F url('brand/backgrounds/map-navy.svg') center/cover;color:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:40px 24px 56px;display:flex;flex-direction:column;gap:28px">
+    <img src="brand/logos/svg/lsp-horizontal-on-dark.svg" alt="Local Search Pro" style="height:44px;align-self:flex-start">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#05B9F2">Website component library · v1.0</p>
+      <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,52px);line-height:1.05;letter-spacing:-0.025em">Components</h1>
+      <p style="color:#D6E0EA;max-width:640px;text-wrap:pretty">Buttons, pricing cards, service cards, icons and CTA sections for the Local Search Pro website. Each one is labelled with the Astro component name it maps to.</p>
+    </div>
+    <nav style="display:flex;gap:8px 20px;flex-wrap:wrap;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:14px">
+      <a href="#buttons" style="color:#fff;text-decoration:none">Buttons</a>
+      <a href="#pricing" style="color:#fff;text-decoration:none">Pricing cards</a>
+      <a href="#services" style="color:#fff;text-decoration:none">Service cards</a>
+      <a href="#icons" style="color:#fff;text-decoration:none">Icons</a>
+      <a href="#cta" style="color:#fff;text-decoration:none">CTA sections</a>
+    </nav>
+  </div>
+</header>
+
+<main style="max-width:1200px;margin:0 auto;padding:72px 24px 0;display:flex;flex-direction:column;gap:96px">
+
+<!-- BUTTONS -->
+<section id="buttons" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid #DCE5EE;padding-bottom:16px">
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em">Buttons</h2>
+    <code style="font-size:14px;color:#465A6E">&lt;Button variant size href icon /&gt;</code>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:20px">
+    <div style="background:#fff;border:1px solid #DCE5EE;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:22px">
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#0077B0">On light</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#FFF066;color:#10283F">Get Started <span>→</span></a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:13px 22px;border-radius:8px;border:1.5px solid #0077B0;color:#0077B0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#0077B0;color:#fff">Explore Websites <span>→</span></a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;border-radius:8px;background:#10283F;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#1C3A57;color:#fff">Ask Us a Question</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#0077B0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:underline;text-underline-offset:4px" style-hover="color:#10283F">Learn more <span>→</span></a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;font-size:13px;color:#465A6E">
+        <span><strong style="color:#10283F;display:block">primary</strong>Yellow · one per view</span>
+        <span><strong style="color:#10283F;display:block">secondary</strong>Cyan Text outline</span>
+        <span><strong style="color:#10283F;display:block">dark</strong>Navy fill</span>
+        <span><strong style="color:#10283F;display:block">link</strong>Underlined text</span>
+      </div>
+    </div>
+    <div style="background:#10283F;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:22px">
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#05B9F2">On navy</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#FFF066;color:#10283F">Get Your Website <span>→</span></a>
+        <a href="#" style="display:inline-flex;align-items:center;min-height:48px;padding:13px 22px;border-radius:8px;border:1.5px solid #fff;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#fff;color:#10283F">Ask Us a Question</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:13px 22px;border-radius:8px;border:1.5px solid #05B9F2;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#05B9F2;color:#10283F">Explore Local SEO <span>→</span></a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;font-size:13px;color:#D6E0EA">
+        <span><strong style="color:#fff;display:block">primary</strong>Yellow</span>
+        <span><strong style="color:#fff;display:block">ghost-dark</strong>White outline</span>
+        <span><strong style="color:#fff;display:block">outline-cyan</strong>Cross-sell links</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:20px">
+    <div style="border:1px solid #DCE5EE;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:18px">
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#0077B0">Sizes</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <span style="display:inline-flex;align-items:center;min-height:40px;padding:9px 16px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px">Small · 40px</span>
+        <span style="display:inline-flex;align-items:center;min-height:48px;padding:14px 24px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px">Medium · 48px</span>
+        <span style="display:inline-flex;align-items:center;min-height:56px;padding:17px 30px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px">Large · 56px</span>
+      </div>
+      <p style="font-size:14px;color:#465A6E">Use small only in the header nav. On mobile, primary buttons in CTA sections go full width.</p>
+    </div>
+    <div style="border:1px solid #DCE5EE;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:18px">
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#0077B0">States · primary</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end">
+        <span style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#465A6E"><span style="display:inline-flex;align-items:center;min-height:48px;padding:14px 22px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px">Get Started</span>Default</span>
+        <span style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#465A6E"><span style="display:inline-flex;align-items:center;min-height:48px;padding:14px 22px;border-radius:8px;background:#FFF066;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px">Get Started</span>Hover #FFF066</span>
+        <span style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#465A6E"><span style="display:inline-flex;align-items:center;min-height:48px;padding:14px 22px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;outline:3px solid #05B9F2;outline-offset:3px">Get Started</span>Focus ring</span>
+        <span style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#465A6E"><span style="display:inline-flex;align-items:center;min-height:48px;padding:14px 22px;border-radius:8px;background:#E6EBF0;color:#7A8A9A;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px">Get Started</span>Disabled</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid #DCE5EE;padding-bottom:16px">
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em">Pricing cards</h2>
+    <code style="font-size:14px;color:#465A6E">&lt;PriceCard name price setup features cta href featured /&gt;</code>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;align-items:stretch">
+    <sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+      <article style="background:#fff;border:{{ p.border }};border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 50px -28px rgba(16,40,63,0.35)">
+        <div style="background:#10283F;color:#fff;padding:24px 24px 22px;display:flex;flex-direction:column;gap:10px;position:relative">
+          <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;top:18px;right:18px;background:#05B9F2;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px">Popular</span>
+          </sc-if>
+          <span style="width:44px;height:44px;border-radius:12px;background:rgba(5,185,242,0.14);display:grid;place-items:center"><span style="width:24px;height:24px;background:#05B9F2;-webkit-mask:url('{{ p.icon }}') center/contain no-repeat;mask:url('{{ p.icon }}') center/contain no-repeat"></span></span>
+          <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:19px;line-height:1.25;text-wrap:balance">{{ p.name }}</h3>
+          <p style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span style="font-size:14px;color:#D6E0EA">From</span><span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:44px;line-height:1;letter-spacing:-0.03em;color:#FFE500">{{ p.price }}</span><span style="font-size:14px;color:#D6E0EA">per month + VAT</span></p>
+          <p style="font-size:14px;color:#D6E0EA">{{ p.setup }}</p>
+        </div>
+        <div style="padding:22px 24px 24px;display:flex;flex-direction:column;gap:18px;flex:1">
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:9px;flex:1;font-size:15.5px">
+            <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="5">
+              <li style="display:flex;gap:10px"><span style="color:#1F8A3A;font-weight:700">✓</span>{{ f }}</li>
+            </sc-for>
+          </ul>
+          <a href="#" style="display:flex;justify-content:center;align-items:center;gap:10px;min-height:48px;padding:14px 20px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#FFF066;color:#10283F">{{ p.cta }} <span>→</span></a>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+  <p style="font-size:14px;color:#465A6E;text-wrap:pretty">Website Starter and the features on the next two cards come from your copy and homepage mockup. SEO Growth features and any setup fees other than Website Starter's are placeholders marked TODO. The "Popular" badge is optional (<code>featured</code>).</p>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid #DCE5EE;padding-bottom:16px">
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em">Service cards</h2>
+    <code style="font-size:14px;color:#465A6E">&lt;ServiceCard icon title summary price href /&gt;</code>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+    <sc-for list="{{ plans }}" as="s" hint-placeholder-count="4">
+      <a href="#" style="text-decoration:none;color:#10283F;background:#fff;border:1px solid #DCE5EE;border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:border-color .15s,box-shadow .15s" style-hover="border-color:#05B9F2;box-shadow:0 14px 34px -20px rgba(16,40,63,0.4);color:#10283F">
+        <span style="width:52px;height:52px;border-radius:14px;background:#EAF6FD;display:grid;place-items:center"><span style="width:26px;height:26px;background:#10283F;-webkit-mask:url('{{ s.icon }}') center/contain no-repeat;mask:url('{{ s.icon }}') center/contain no-repeat"></span></span>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:20px;line-height:1.25">{{ s.name }}</h3>
+        <p style="color:#465A6E;font-size:16px;flex:1;text-wrap:pretty">{{ s.summary }}</p>
+        <p style="font-size:15px;color:#33475B">From <strong style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;color:#10283F">{{ s.price }}</strong> per month + VAT</p>
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;color:#0077B0">{{ s.link }} →</span>
+      </a>
+    </sc-for>
+  </div>
+  <div style="background:#10283F;border-radius:16px;padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+    <sc-for list="{{ plans }}" as="s" hint-placeholder-count="4">
+      <a href="#" style="text-decoration:none;color:#fff;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:22px;display:flex;gap:14px;align-items:flex-start" style-hover="background:rgba(255,255,255,0.09);color:#fff">
+        <span style="flex:none;width:24px;height:24px;margin-top:2px;background:#05B9F2;-webkit-mask:url('{{ s.icon }}') center/contain no-repeat;mask:url('{{ s.icon }}') center/contain no-repeat"></span>
+        <span style="display:flex;flex-direction:column;gap:4px"><strong style="font-family:'Plus Jakarta Sans',sans-serif;font-size:17px">{{ s.name }}</strong><span style="font-size:14px;color:#D6E0EA">From {{ s.price }}/month + VAT</span></span>
+      </a>
+    </sc-for>
+  </div>
+  <p style="font-size:14px;color:#465A6E;margin-top:-12px">Compact variant (<code>variant="compact"</code>) for navy sections, footers and cross-sell rows.</p>
+</section>
+
+<!-- ICONS -->
+<section id="icons" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid #DCE5EE;padding-bottom:16px">
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em">Icons</h2>
+    <code style="font-size:14px;color:#465A6E">&lt;Icon name size /&gt; · brand/icons/*.svg</code>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px">
+    <sc-for list="{{ icons }}" as="i" hint-placeholder-count="10">
+      <div style="border:1px solid #DCE5EE;border-radius:12px;padding:20px 14px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+        <span style="display:flex;gap:10px">
+          <span style="width:48px;height:48px;border-radius:14px;background:#EAF6FD;display:grid;place-items:center"><span style="width:24px;height:24px;background:#10283F;-webkit-mask:url('{{ i.src }}') center/contain no-repeat;mask:url('{{ i.src }}') center/contain no-repeat"></span></span>
+          <span style="width:48px;height:48px;border-radius:14px;background:#10283F;display:grid;place-items:center"><span style="width:24px;height:24px;background:#05B9F2;-webkit-mask:url('{{ i.src }}') center/contain no-repeat;mask:url('{{ i.src }}') center/contain no-repeat"></span></span>
+        </span>
+        <span style="font-size:13px;line-height:1.35;color:#33475B">{{ i.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+  <p style="font-size:14px;color:#465A6E;text-wrap:pretty">24px grid, 2px stroke, round caps and joins, outline only. The files use <code>currentColor</code>, so inline them and set the colour with CSS: navy on light, cyan on navy. Tiles are 48px with a 14px radius.</p>
+</section>
+
+<!-- CTA -->
+<section id="cta" style="display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid #DCE5EE;padding-bottom:16px">
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em">CTA sections</h2>
+    <code style="font-size:14px;color:#465A6E">&lt;CTA variant="banner" | "band" | "inline" /&gt;</code>
+  </div>
+
+  <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#0077B0">banner · end of page</p>
+  <div style="position:relative;background:#10283F url('brand/backgrounds/map-navy.svg') center/cover;color:#fff;border-radius:16px;overflow:hidden">
+    <img src="brand/logos/svg/lsp-symbol-on-dark.svg" alt="" style="position:absolute;right:-60px;bottom:-100px;width:340px;pointer-events:none">
+    <div style="position:relative;padding:64px 48px;display:flex;flex-direction:column;gap:14px;max-width:680px">
+      <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#05B9F2">Ready for a Better Business Website?</p>
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-0.025em;text-wrap:balance">Get Online Without the Big Upfront Cost</h3>
+      <p style="color:#D6E0EA;text-wrap:pretty">Give your business a professional website that helps customers understand what you offer and makes it easy for them to contact you.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#FFF066;color:#10283F">Get Your Website <span>→</span></a>
+        <a href="#" style="display:inline-flex;align-items:center;min-height:48px;padding:13px 22px;border-radius:8px;border:1.5px solid #fff;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#fff;color:#10283F">Ask Us a Question</a>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#0077B0;margin-top:12px">band · cross-sell between sections</p>
+  <div style="background:#10283F url('brand/backgrounds/map-navy.svg') center/cover;color:#fff;border-radius:16px;padding:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:28px;line-height:1.15;letter-spacing:-0.02em">Need more customers to find your business through Google?</h3>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+      <p style="color:#D6E0EA">Our Local SEO packages can help improve your visibility in relevant local searches.</p>
+      <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:13px 22px;border-radius:8px;border:1.5px solid #05B9F2;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#05B9F2;color:#10283F">Explore Local SEO <span>→</span></a>
+    </div>
+  </div>
+
+  <p style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#0077B0;margin-top:12px">inline · light pages, under content</p>
+  <div style="background:#EAF6FD;border-radius:16px;padding:32px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px 32px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:18px">
+      <img src="brand/logos/svg/lsp-symbol-on-light.svg" alt="" style="width:52px;flex:none">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.01em">Websites from £79 per month + VAT.</h3>
+        <p style="color:#33475B;font-size:16px">Design, hosting and maintenance included.</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 24px;border-radius:8px;background:#FFE500;color:#10283F;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#FFF066;color:#10283F">Get Started <span>→</span></a>
+      <a href="#" style="display:inline-flex;align-items:center;min-height:48px;padding:13px 22px;border-radius:8px;border:1.5px solid #0077B0;color:#0077B0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none" style-hover="background:#0077B0;color:#fff">Ask Us a Question</a>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid #DCE5EE;padding:28px 0 56px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+  <img src="brand/logos/svg/lsp-horizontal-on-light.svg" alt="Local Search Pro" style="height:34px">
+  <span style="font-size:14px;color:#465A6E">See also <a href="Brand Guidelines.dc.html">Brand Guidelines</a></span>
+</footer>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const ic = n => `brand/icons/lsp-icon-${n}.svg`;
+    const plans = [
+      { name: "Pay Monthly Websites", price: "£79", setup: "£149 one-off setup fee + VAT", icon: ic("pay-monthly-websites"), cta: "Choose Website Starter", link: "Explore Websites", summary: "A professional website without the big upfront cost.",
+        features: ["Up to five professionally designed pages", "Mobile-friendly layouts", "Contact form", "Basic on-page SEO", "Hosting and backups"] },
+      { name: "Google Business Profile Management", price: "£69", setup: "TODO: setup fee", icon: ic("google-business-profile"), cta: "Choose Google Profile", link: "Explore Google Profile", summary: "Make a better impression when customers find you on Google.",
+        features: ["Profile optimisation and setup", "Two Google updates per month", "Business information management", "Review response guidance", "Performance monitoring"] },
+      { name: "Local SEO", price: "£149", setup: "TODO: setup fee", icon: ic("local-seo"), cta: "Choose Local SEO", link: "Explore Local SEO", summary: "Help more local customers discover your business.", featured: true,
+        features: ["Local keyword research", "Website optimisation", "Google Business Profile care", "Search performance tracking", "Monthly reporting"] },
+      { name: "SEO Growth", price: "£249", setup: "TODO: setup fee", icon: ic("seo-growth"), cta: "Choose SEO Growth", link: "Explore SEO Growth", summary: "TODO: one-line summary for SEO Growth.",
+        features: ["TODO: feature 1", "TODO: feature 2", "TODO: feature 3", "TODO: feature 4", "TODO: feature 5"] }
+    ].map(p => ({ ...p, featured: !!p.featured, border: p.featured ? "2px solid #05B9F2" : "1px solid #DCE5EE" }));
+    const icons = [
+      ["pay-monthly-websites", "Pay Monthly Websites"], ["google-business-profile", "Google Business Profile"], ["local-seo", "Local SEO"],
+      ["seo-growth", "SEO Growth"], ["website-hosting", "Website Hosting"], ["reporting", "Reporting"], ["customer-support", "Customer Support"],
+      ["online-enquiries", "Online Enquiries"], ["business-growth", "Business Growth"], ["location", "Location & Maps"]
+    ].map(([n, label]) => ({ src: ic(n), label }));
+    return { plans, icons };
+  }
+}
+</script>
+</body>
+</html>

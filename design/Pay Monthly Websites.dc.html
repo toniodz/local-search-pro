@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#fff;color:#1B2838;font-family:'Barlow',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0A8FC4;text-decoration:none}
+a:hover{color:#1B2838}
+h1,h2,h3,p{margin:0}
+</style>
+</helmet>
+
+<div style="min-height:100vh;font-size:17px;line-height:1.55">
+
+<!-- NAV -->
+<header style="background:#17222F;border-bottom:1px solid rgba(255,255,255,0.08)">
+  <div style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <a href="#" style="display:flex;align-items:center;gap:12px;color:#fff">
+      <svg width="42" height="42" viewBox="0 0 100 100"><path d="M50 2a48 48 0 0 0-34 82c4 4 10 2 10-4V58H17c-3 0-4-3-3-5L46 12c2-3 6-3 8 0l32 41c1 2 0 5-3 5H74v22c0 6 6 8 10 4A48 48 0 0 0 50 2z" fill="#F5D90A"></path></svg>
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:21px;letter-spacing:-0.5px">LocalSearch<span style="color:#0BB4F0">Pro</span><span style="color:#F5D90A">.</span></span>
+        <span style="font-size:9.5px;letter-spacing:2.6px;font-weight:600;margin-top:5px">HELPING <span style="color:#0BB4F0">YOU</span> GET FOUND ONLINE</span>
+      </span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-size:15px;font-weight:500">
+      <a href="#" style="color:#fff">Home</a>
+      <a href="#" style="color:#fff;box-shadow:inset 0 -2px 0 #F5D90A;padding-bottom:4px">Websites</a>
+      <a href="#" style="color:#fff">Google Profile</a>
+      <a href="#" style="color:#fff">Local SEO</a>
+      <a href="#pricing" style="color:#fff">Pricing</a>
+      <a href="#pricing" style="background:#F5D90A;color:#17222F;font-weight:700;padding:10px 18px;border-radius:6px">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section style="position:relative;background:#1B2838;color:#fff;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:56px 56px;pointer-events:none"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:80px 24px 120px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:56px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p style="font-weight:600;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#0BB4F0">Pay Monthly Websites for Small Businesses</p>
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(44px,6vw,72px);line-height:0.98;text-transform:uppercase;text-wrap:balance">A Professional Website <span style="color:#0BB4F0">Without the Big</span> Upfront Cost</h1>
+      <div style="display:flex;flex-direction:column;gap:12px;color:#D5DEE8;max-width:540px;text-wrap:pretty">
+        <p>Your business deserves a website that looks professional, works properly and makes it easy for customers to get in touch.</p>
+        <p>At Local Search Pro, we make getting online simple with affordable pay monthly websites designed for small businesses across the UK.</p>
+        <p>Whether you're starting a new business, replacing an outdated website or finally getting your business online, we'll help you make a great first impression.</p>
+      </div>
+      <p style="font-size:20px;font-weight:600">Professional websites from just <span style="color:#F5D90A;font-weight:700">£79 per month</span> + VAT.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#pricing" style="display:inline-flex;align-items:center;gap:10px;background:#F5D90A;color:#17222F;font-weight:700;padding:15px 26px;border-radius:6px;font-size:17px" style-hover="background:#FFE52E;color:#17222F">Get Started <span>→</span></a>
+      </div>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;font-size:15px;color:#D5DEE8">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #F5D90A;color:#F5D90A;display:grid;place-items:center;font-size:11px">✓</span>Mobile-friendly design</span>
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #F5D90A;color:#F5D90A;display:grid;place-items:center;font-size:11px">✓</span>Secure hosting</span>
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:50%;border:1.5px solid #F5D90A;color:#F5D90A;display:grid;place-items:center;font-size:11px">✓</span>Ongoing maintenance</span>
+      </div>
+    </div>
+    <sc-if value="{{ showHeroImage }}" hint-placeholder-val="{{ true }}">
+      <div style="aspect-ratio:4/3;width:100%">
+        <image-slot id="hero-mockup" shape="rounded" radius="14" fit="contain" placeholder="Drop a laptop + phone website mockup"></image-slot>
+      </div>
+    </sc-if>
+  </div>
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style="position:absolute;left:0;bottom:-1px;width:100%;height:90px;display:block"><path d="M0 120 C 500 120, 1000 90, 1440 10 L1440 120 Z" fill="#0BB4F0"></path><path d="M0 120 C 520 118, 1020 104, 1440 40 L1440 120 Z" fill="#fff"></path></svg>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section style="padding:88px 24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:start">
+      <h2 style="font-weight:700;font-size:clamp(32px,3.6vw,44px);line-height:1.1;letter-spacing:-0.5px;text-wrap:balance">Everything You Need From a Small Business Website</h2>
+      <div style="border-left:2px solid #0BB4F0;padding-left:24px;display:flex;flex-direction:column;gap:12px;color:#3E4C5C;text-wrap:pretty">
+        <p>Your website is often the first place potential customers go to learn about your business.</p>
+        <p>It should explain what you do, build confidence in your services and make taking the next step easy.</p>
+        <p>Our pay monthly websites are designed around those essentials, giving you a professional online presence without the expense of a fully bespoke website.</p>
+        <p>We take care of the design, setup, hosting and maintenance, leaving you free to concentrate on running your business.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <h3 style="font-size:22px;font-weight:700">What's Included?</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:20px">
+        <sc-for list="{{ included }}" as="f" hint-placeholder-count="7">
+          <div style="border:1px solid #E1E8F0;border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:12px;background:#fff">
+            <span style="width:44px;height:44px;border-radius:50%;background:#E6F6FD;color:#0A8FC4;display:grid;place-items:center;font-weight:700;font-size:15px">{{ f.n }}</span>
+            <h4 style="margin:0;font-size:19px;font-weight:700">{{ f.t }}</h4>
+            <p style="color:#4A5868;font-size:16px;text-wrap:pretty">{{ f.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:#F2F7FC;padding:88px 24px">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p style="font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#0A8FC4">Pricing</p>
+      <h2 style="font-weight:700;font-size:clamp(32px,3.6vw,44px);line-height:1.1;letter-spacing:-0.5px;text-wrap:balance">Simple Pricing. No Big Website Bill.</h2>
+      <p style="color:#3E4C5C;max-width:460px;text-wrap:pretty">Our Website Starter package is ideal for small businesses looking for a professional website at an affordable monthly price.</p>
+      <p style="color:#3E4C5C;max-width:460px;text-wrap:pretty">Your monthly subscription includes website hosting, maintenance and the agreed ongoing support.</p>
+    </div>
+    <div style="background:#fff;border:1px solid #E1E8F0;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px -24px rgba(27,40,56,0.35)">
+      <div style="background:#1B2838;color:#fff;padding:28px 32px;display:flex;flex-direction:column;gap:6px">
+        <h3 style="font-size:22px;font-weight:700">Website Starter</h3>
+        <p style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:64px;line-height:1;color:#F5D90A">£79</span><span style="font-size:17px;color:#D5DEE8">per month + VAT</span></p>
+        <p style="color:#D5DEE8;font-size:16px"><strong style="color:#fff">£149</strong> one-off setup fee + VAT</p>
+      </div>
+      <div style="padding:28px 32px;display:flex;flex-direction:column;gap:20px">
+        <p style="font-weight:700">Included in your package:</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ packageItems }}" as="p" hint-placeholder-count="7">
+            <span style="display:flex;gap:12px;align-items:baseline"><span style="color:#2BB24C;font-weight:700">✓</span>{{ p }}</span>
+          </sc-for>
+        </div>
+        <a href="#" style="display:flex;justify-content:center;align-items:center;gap:10px;background:#F5D90A;color:#17222F;font-weight:700;padding:15px 26px;border-radius:6px" style-hover="background:#FFE52E;color:#17222F">Choose Website Starter <span>→</span></a>
+        <p style="font-size:14px;font-style:italic;color:#5A6878;text-wrap:pretty">Minimum 24-month agreement. Additional pages, advanced features and larger content changes are quoted separately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section style="padding:88px 24px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px 64px">
+    <h2 style="font-weight:700;font-size:clamp(32px,3.6vw,44px);line-height:1.1;letter-spacing:-0.5px;text-wrap:balance">Why Choose a Pay Monthly Website?</h2>
+    <div style="grid-column:span 2;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:36px 40px">
+      <sc-for list="{{ why }}" as="w" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:3px solid #0BB4F0;padding-top:18px">
+          <h3 style="font-size:19px;font-weight:700">{{ w.t }}</h3>
+          <p style="color:#4A5868;font-size:16px;text-wrap:pretty">{{ w.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section style="padding:0 24px 88px">
+  <div style="max-width:1200px;margin:0 auto;background:#1B2838;color:#fff;border-radius:18px;padding:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px;align-items:center;position:relative;overflow:hidden">
+    <div style="display:flex;flex-direction:column;gap:14px;position:relative">
+      <h2 style="font-weight:700;font-size:clamp(28px,3vw,38px);line-height:1.12;text-wrap:balance">Websites Designed for Local Businesses</h2>
+      <p style="color:#D5DEE8;text-wrap:pretty">We create affordable websites for businesses across a wide range of industries, including tradespeople, cleaning companies, landscaping businesses, salons, independent retailers and professional services.</p>
+      <p style="color:#D5DEE8;text-wrap:pretty">Whether you work in one town or cover several locations, we'll help you present your services clearly and professionally.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:12px;position:relative">
+      <p style="font-size:21px;font-weight:700">Need more customers to find your business through Google?</p>
+      <p style="color:#D5DEE8">Our Local SEO packages can help improve your visibility in relevant local searches.</p>
+      <a href="#" style="align-self:flex-start;margin-top:8px;display:inline-flex;gap:10px;border:1.5px solid #0BB4F0;color:#fff;font-weight:700;padding:12px 22px;border-radius:6px" style-hover="background:#0BB4F0;color:#17222F">Explore Local SEO <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section style="background:#F2F7FC;padding:88px 24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <h2 style="font-weight:700;font-size:clamp(32px,3.6vw,44px);line-height:1.1;letter-spacing:-0.5px">How It Works</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="width:52px;height:52px;border-radius:50%;background:#F5D90A;color:#17222F;display:grid;place-items:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px">{{ s.n }}</span>
+          <h3 style="font-size:20px;font-weight:700">{{ s.t }}</h3>
+          <p style="color:#4A5868;font-size:16px;text-wrap:pretty">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:88px 24px">
+  <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
+    <h2 style="font-weight:700;font-size:clamp(32px,3.6vw,44px);line-height:1.1;letter-spacing:-0.5px">Frequently Asked Questions</h2>
+    <div style="display:flex;flex-direction:column;border-top:1px solid #E1E8F0">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="7">
+        <div style="border-bottom:1px solid #E1E8F0">
+          <button onClick="{{ q.toggle }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:19px;font-weight:600;color:#1B2838">
+            <span>{{ q.q }}</span>
+            <span style="flex:none;width:30px;height:30px;border-radius:50%;background:#E6F6FD;color:#0A8FC4;display:grid;place-items:center;font-size:20px;font-weight:500">{{ q.icon }}</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <p style="padding:0 50px 24px 0;color:#4A5868;text-wrap:pretty">{{ q.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="position:relative;background:#1B2838;color:#fff;overflow:hidden">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="position:absolute;top:-1px;left:0;width:100%;height:60px;display:block"><path d="M0 0 H1440 V0 C 1000 70, 400 70, 0 20 Z" fill="#fff"></path></svg>
+  <div style="position:absolute;right:-60px;bottom:-90px;width:340px;height:340px;opacity:0.95;pointer-events:none">
+    <svg width="100%" height="100%" viewBox="0 0 100 100"><path d="M50 2a48 48 0 0 0-34 82c4 4 10 2 10-4V58H17c-3 0-4-3-3-5L46 12c2-3 6-3 8 0l32 41c1 2 0 5-3 5H74v22c0 6 6 8 10 4A48 48 0 0 0 50 2z" fill="#F5D90A"></path></svg>
+  </div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:120px 24px 96px;display:flex;flex-direction:column;gap:16px;max-width:1200px">
+    <p style="font-weight:600;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#0BB4F0">Ready for a Better Business Website?</p>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(40px,5vw,60px);line-height:1;text-transform:uppercase;max-width:700px;text-wrap:balance">Get Online Without the Big Upfront Cost</h2>
+    <p style="color:#D5DEE8;max-width:620px;text-wrap:pretty">Give your business a professional website that helps customers understand what you offer and makes it easy for them to contact you.</p>
+    <p style="color:#D5DEE8;max-width:620px;text-wrap:pretty">With affordable monthly pricing and ongoing technical support, getting started couldn't be simpler.</p>
+    <p style="font-size:20px;font-weight:600;margin-top:4px">Websites from <span style="color:#F5D90A;font-weight:700">£79 per month</span> + VAT.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:12px">
+      <a href="#pricing" style="display:inline-flex;align-items:center;gap:10px;background:#F5D90A;color:#17222F;font-weight:700;padding:15px 26px;border-radius:6px" style-hover="background:#FFE52E;color:#17222F">Get Your Website <span>→</span></a>
+      <a href="#" style="display:inline-flex;align-items:center;border:1.5px solid #fff;color:#fff;font-weight:700;padding:15px 26px;border-radius:6px" style-hover="background:#fff;color:#17222F">Ask Us a Question</a>
+    </div>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showHeroImage&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;faqMultiOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { open: [0] };
+  toggle(i) {
+    const multi = this.props.faqMultiOpen ?? false;
+    this.setState(s => {
+      const isOpen = s.open.includes(i);
+      if (isOpen) return { open: s.open.filter(x => x !== i) };
+      return { open: multi ? [...s.open, i] : [i] };
+    });
+  }
+  renderVals() {
+    const included = [
+      ["Professional Website Design", "A modern, attractive website built using our proven layouts and tailored to your business, branding and services."],
+      ["Up to Five Pages", "Room to introduce your business, explain your services, answer common questions and encourage enquiries."],
+      ["Mobile-Friendly Design", "Your website will work across mobiles, tablets and desktop computers, making it easy for customers to browse wherever they are."],
+      ["Fast, Secure Hosting", "Reliable hosting, SSL security and routine backups to keep your website running smoothly."],
+      ["Contact Forms and Enquiry Buttons", "Clear ways for potential customers to get in touch, request a quote or ask questions."],
+      ["Basic Search Engine Optimisation", "Essential page titles, descriptions, heading structure and other foundational SEO settings to help search engines understand your website."],
+      ["Ongoing Maintenance", "We handle routine technical maintenance and limited content amendments within your agreed package."]
+    ].map(([t, d], i) => ({ t, d, n: String(i + 1).padStart(2, "0") }));
+    const faqs = [
+      ["How much does a pay monthly website cost?", "Our Website Starter package costs £79 per month plus VAT, with a £149 initial setup fee plus VAT. Additional pages and features are available at an extra cost."],
+      ["Is there a minimum contract?", "Yes. Website Starter is based on a 24-month minimum agreement. Your contract will explain the payment terms, cancellation process and options for your website at the end of the agreement."],
+      ["Can I use my existing domain name?", "Yes. If you already have a domain name, we can normally connect it to your new website, provided you have the necessary access."],
+      ["Will my website appear on Google?", "Your website will include basic SEO setup to help search engines discover and understand its pages. However, appearing prominently for competitive searches usually requires additional optimisation and ongoing work."],
+      ["Can I add more pages later?", "Yes. Additional pages and features can be quoted separately as your business grows."],
+      ["Can you update my website?", "Limited content amendments are included within your package. Larger changes, additional functionality and redesigns can be quoted separately."],
+      ["What happens if I cancel?", "Your agreement will set out cancellation terms, ownership and any options to purchase or transfer your website. We will explain these before you sign up."]
+    ].map(([q, a], i) => {
+      const open = this.state.open.includes(i);
+      return { q, a, open, icon: open ? "−" : "+", toggle: () => this.toggle(i) };
+    });
+    return {
+      showHeroImage: this.props.showHeroImage ?? true,
+      included,
+      packageItems: ["Up to five professionally designed pages", "Mobile-friendly layouts", "Contact form", "Basic on-page SEO", "SSL certificate", "Hosting and backups", "Limited ongoing content amendments"],
+      why: [
+        ["Keep Your Startup Costs Down", "A new website doesn't have to mean a large initial investment. Spread the cost through manageable monthly payments."],
+        ["Get Online With Less Hassle", "You won't need to organise separate hosting, technical maintenance or website setup. We take care of those details."],
+        ["Give Customers Confidence", "A professional website helps demonstrate that your business is established, approachable and ready to help."],
+        ["Make It Easier to Receive Enquiries", "With clear information, contact forms and prominent calls to action, visitors can quickly find out how to contact you."],
+        ["Keep Your Website Maintained", "Your website's hosting and routine technical maintenance are included in your ongoing subscription."]
+      ].map(([t, d]) => ({ t, d })),
+      steps: [
+        ["Choose Your Website Package", "Select Website Starter and complete our simple signup process."],
+        ["Tell Us About Your Business", "Share your logo, business details, services, images and the information you want included on your website."],
+        ["We Build Your Website", "We'll adapt one of our professional website layouts to suit your business and prepare it for your review."],
+        ["Your Website Goes Live", "Once approved, we'll launch your website and take care of the hosting and ongoing technical maintenance covered by your plan."]
+      ].map(([t, d], i) => ({ t, d, n: i + 1 })),
+      faqs
+    };
+  }
+}
+</script>
+</body>
+</html>

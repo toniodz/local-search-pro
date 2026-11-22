@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.localsearchpro.co.uk/sitemap-index.xml
