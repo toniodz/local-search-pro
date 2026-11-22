@@ -7,8 +7,10 @@ interface Props {
   features: string[]; cta: string; href: string; featured?: boolean;
   /** Show the "From" prefix (default true) */
   from?: boolean; period?: string; note?: string;
+  /** Label above the feature list, e.g. "Your package includes:" */
+  includedLabel?: string;
 }
-const { name, icon, price, setup, features, cta, href, featured = false, from = true, period = "per month + VAT", note } = Astro.props;
+const { name, icon, price, setup, features, cta, href, featured = false, from = true, period = "per month + VAT", note, includedLabel } = Astro.props;
 const shown = typeof price === "number" ? `£${price}` : price;
 ---
 <article class:list={["pcard", featured && "pcard--featured"]}>
@@ -22,6 +24,7 @@ const shown = typeof price === "number" ? `£${price}` : price;
     {setup && <p class="small">{setup}</p>}
   </div>
   <div class="body">
+    {includedLabel && <p class="label">{includedLabel}</p>}
     <ul class="features">{features.map((f) => <li>{f}</li>)}</ul>
     <Button href={href} fullWidth arrow>{cta}</Button>
     {note && <p class="note"><em>{note}</em></p>}
@@ -41,5 +44,6 @@ const shown = typeof price === "number" ? `£${price}` : price;
   .features { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; flex: 1; font-size: 15.5px; }
   .features li { display: flex; gap: 10px; }
   .features li::before { content: "✓"; color: var(--success); font-weight: 700; }
+  .label { font-weight: 700; margin-bottom: -6px; }
   .note { font-size: 14px; color: var(--ink-3); }
 </style>

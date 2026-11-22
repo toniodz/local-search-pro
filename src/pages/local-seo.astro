@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PriceCard from "../components/PriceCard.astro";
+import FAQ from "../components/FAQ.astro";
+import Steps from "../components/Steps.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import CTA from "../components/CTA.astro";
+import { route } from "../config/routes";
+import { byId, setupLine } from "../data/services";
+import { planCard, serviceSchema } from "../data/plans";
+
+const svc = byId("local-seo");
+const faqs = [
+  {
+    "question": "How much does local SEO cost?",
+    "answer": "Our Local SEO Essentials package starts at £149 per month plus VAT, with a £149 initial setup fee plus VAT."
+  },
+  {
+    "question": "How long does local SEO take to work?",
+    "answer": "Some improvements may be reflected in search results relatively quickly, while others can take several months or longer. This depends on your website, location, competition and the work required."
+  },
+  {
+    "question": "Do you guarantee Google rankings?",
+    "answer": "No. Google rankings are determined by Google's systems and can change. We focus on relevant optimisation work and measurable improvements rather than making unrealistic guarantees."
+  },
+  {
+    "question": "Do I need a website?",
+    "answer": "We recommend having a website for a comprehensive local SEO campaign. If you don't have one, we also offer affordable pay monthly websites."
+  },
+  {
+    "question": "Can you work with my existing website?",
+    "answer": "In many cases, yes. We'll need to review your existing website and confirm that we can access and edit the areas required."
+  },
+  {
+    "question": "Is Google Business Profile management included?",
+    "answer": "Yes. Local SEO Essentials includes the services within our Google Profile Care package."
+  },
+  {
+    "question": "Will you write a new blog every month?",
+    "answer": "Not automatically. Our entry-level package includes a defined monthly optimisation task. New articles, additional landing pages and substantial content writing are quoted separately where appropriate."
+  }
+];
+const steps = [
+  {
+    "title": "Understand Your Business",
+    "text": "We learn about your services, target customers and the locations you want to reach."
+  },
+  {
+    "title": "Review Your Current Visibility",
+    "text": "We assess your website, Google Business Profile and relevant search terms to identify opportunities."
+  },
+  {
+    "title": "Prioritise Improvements",
+    "text": "We focus on achievable, useful changes rather than creating unnecessary pages or chasing keywords that don't suit your business."
+  },
+  {
+    "title": "Improve and Monitor",
+    "text": "We complete the agreed monthly work, review available performance data and identify future priorities."
+  }
+];
+const title = "Affordable Local SEO Services from £149 | Local Search Pro";
+const description = "Affordable local SEO services for UK small businesses from £149/month. Website optimisation, Google Business Profile management and SEO reporting.";
+const jsonLd = serviceSchema(svc, description);
+---
+<BaseLayout {title} {description} ctaHref="#pricing" {jsonLd}>
+  <Hero title="Affordable Local SEO Services for Small Businesses" lead="Help More Local Customers Find Your Business on Google">
+    <div class="stack muted" style="gap:12px;max-width:560px"><p>When someone searches for a plumber, electrician, cleaner or another service in their area, they're often looking for a business they can contact.</p><p>But if your business isn't visible in relevant local searches, those potential customers may never discover you.</p><p>At Local Search Pro, we provide affordable local SEO services designed to help small businesses improve their visibility in Google Search and Google Maps.</p><p>No complicated marketing jargon or expensive agency retainers. Just practical, ongoing SEO work at a straightforward monthly price.</p></div><p class="hero__price">Local SEO packages from <span class="hl">£149 per month</span> + VAT.</p><div class="btn-row"><Button variant="primary" href="#pricing" arrow>Get Started with Local SEO</Button></div>
+    <Fragment slot="media">Local SEO graphic: location markers, search results, upward progress<br><small>(to be supplied)</small></Fragment>
+  </Hero>
+<section class="section "><div class="container"><div class="split"><div class="stack"><h2 class="h2">What Is Local SEO?</h2></div><div class="stack muted prose"><p>Local search engine optimisation, or local SEO, is the process of improving how your business appears when people search online for services in a particular area.</p><p>For example, potential customers might search for:</p><ul class="chips"><li><svg class="chip-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path><path d="M11 14.5s-2.5-2.2-2.5-4a2.5 2.5 0 0 1 5 0c0 1.8-2.5 4-2.5 4z"></path></svg>Electrician in Canterbury</li><li><svg class="chip-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path><path d="M11 14.5s-2.5-2.2-2.5-4a2.5 2.5 0 0 1 5 0c0 1.8-2.5 4-2.5 4z"></path></svg>Emergency plumber near me</li><li><svg class="chip-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path><path d="M11 14.5s-2.5-2.2-2.5-4a2.5 2.5 0 0 1 5 0c0 1.8-2.5 4-2.5 4z"></path></svg>Roof repairs in Dover</li><li><svg class="chip-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path><path d="M11 14.5s-2.5-2.2-2.5-4a2.5 2.5 0 0 1 5 0c0 1.8-2.5 4-2.5 4z"></path></svg>Cleaning company in Folkestone</li><li><svg class="chip-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path><path d="M11 14.5s-2.5-2.2-2.5-4a2.5 2.5 0 0 1 5 0c0 1.8-2.5 4-2.5 4z"></path></svg>Landscaper in Maidstone</li></ul><p>Google uses various signals to decide which businesses and websites appear for these searches.</p><p>Local SEO helps make your website and business information more relevant, useful and accessible to people searching for your services.</p><p>The goal isn't simply to attract more website visitors. It's to help your business become more visible to people looking for what you offer.</p></div></div></div></section>
+<section class="section section--pale"><div class="container"><div class="section-head stack"><h2 class="h2">What's Included in Our Local SEO Service?</h2></div><div class="cards"><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Local Keyword Research</h3><p>We identify relevant search terms associated with your services and the areas you cover.</p><p>This helps us understand what potential customers are searching for and where opportunities may exist.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Website SEO Review</h3><p>We'll review the important pages on your website and identify areas that could be improved.</p><p>This may include page titles, descriptions, headings, service information and the way your pages are structured.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Google Business Profile Optimisation</h3><p>Your package includes our Google Profile Care service, helping keep your listing accurate, complete and regularly updated.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Monthly SEO Improvements</h3><p>Each month, we'll carry out one agreed, prioritised website optimisation task.</p><p>The exact work depends on your website and the opportunities identified. It may include improving a service page, refining page titles, strengthening internal links or updating existing content.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Local Search Tracking</h3><p>We'll monitor a defined set of relevant search terms to help understand changes in your local search visibility.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Simple Monthly Reporting</h3><p>We'll provide a clear summary of the work completed and the available performance data, without overwhelming you with unnecessary technical detail.</p></article></div></div></section>
+<section class="section " id="pricing"><div class="container"><div class="split" style="align-items:center"><div class="stack"><p class="eyebrow">Pricing</p><h2 class="h2">Local SEO Essentials</h2><h3 class="h3 section-sub">Affordable SEO for Growing Local Businesses</h3><p class="muted">Our Local SEO Essentials package is ideal for small businesses wanting practical, ongoing local search optimisation at an affordable price.</p></div>
+<PriceCard {...planCard(svc)} from={false} href={route("signup:Local SEO Essentials")} /></div></div></section>
+<section class="section section--pale"><div class="container"><div class="section-head stack"><h2 class="h2">Why Invest in Local SEO?</h2></div><div class="why"><div><h3 class="h3">Reach Customers in Your Area</h3><p>Make your website and business information more relevant to searches for your services in the locations you cover.</p></div><div><h3 class="h3">Attract More Relevant Visitors</h3><p>Instead of trying to reach everyone, local SEO focuses on people searching for businesses like yours.</p></div><div><h3 class="h3">Improve Your Existing Website</h3><p>Small, targeted improvements to your website can make information clearer for customers and easier for search engines to understand.</p></div><div><h3 class="h3">Strengthen Your Google Presence</h3><p>Your Google Business Profile and website can work together to support your online visibility.</p></div><div><h3 class="h3">Build Long-Term Value</h3><p>Unlike paid advertising, which normally stops generating ad traffic when you stop paying, useful website content and SEO improvements can continue to provide value over time.</p><p>Results still depend on competition, search demand and ongoing changes in Google.</p></div></div></div></section>
+<section class="section "><div class="container"><div class="split"><div class="stack"><h2 class="h2">Local SEO for Trades and Small Businesses</h2></div><div class="stack muted prose"><p>We help independent businesses improve their online presence without needing the budget of a large company.</p><p>Our services are particularly suited to tradespeople, property maintenance businesses, cleaning companies, professional services and other businesses serving customers within defined locations.</p><p>Whether you cover one town, several neighbouring areas or a wider region, we can help identify relevant local search opportunities.</p></div></div></div></section>
+<section class="section section--pale"><div class="container"><div class="section-head stack"><h2 class="h2">Our Approach to Local SEO</h2></div><Steps items={steps} /></div></section>
+<section class="section  " id="faq"><div class="container"><FAQ items={faqs} /></div></section>
+<CTA variant="banner" bleed curve={false} eyebrow="Ready to Improve Your Local Google Visibility?" eyebrowAs="h2" as="h3" title="Get Found by More of the Right Customers">
+    <p class="muted">Your potential customers are searching for local businesses every day.</p><p class="muted">Let's make sure your website and Google Business Profile are giving your business the best opportunity to be discovered.</p><p class="hero__price">Local SEO from <span class="hl">£149 per month</span> + VAT.</p>
+    <Fragment slot="actions"><Button variant="primary" href="#pricing" arrow>Get Started</Button><Button variant="ghost-dark" href={route("contact")}>Ask About Local SEO</Button></Fragment>
+  </CTA>
+</BaseLayout>

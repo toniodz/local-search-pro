@@ -1,14 +1,23 @@
 ---
-interface Item { question: string; answer: string }
-interface Props { items: Item[]; openFirst?: boolean }
-const { items, openFirst = true } = Astro.props;
+interface Item { question: string; answer: string | string[] }
+interface Props { items: Item[]; heading?: string; openFirst?: boolean }
+import { SITE } from "../config/site";
+const { items, heading = "Frequently Asked Questions", openFirst = true } = Astro.props;
+const paras = (a: string | string[]) => (Array.isArray(a) ? a : [a]);
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: items.map((i) => ({ "@type": "Question", name: i.question, acceptedAnswer: { "@type": "Answer", text: i.answer } })),
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: items.map((i) => ({ "@type": "Question", name: i.question, acceptedAnswer: { "@type": "Answer", text: paras(i.answer).join(" ") } })),
 };
 ---
 <div class="faq">
-  {items.map((i, n) => <details open={openFirst && n === 0}><summary>{i.question}</summary><p>{i.answer}</p></details>)}
+  <h2 class="h2">{heading}</h2>
+  <div class="faq__list">
+    {items.map((i, n) => (
+      <details open={openFirst && n === 0}>
+        <summary><h3>{i.question}</h3></summary>
+        <div class="faq__a">{paras(i.answer).map((p) => <p>{p}</p>)}</div>
+      </details>
+    ))}
+  </div>
 </div>
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+{SITE.faqSchema && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

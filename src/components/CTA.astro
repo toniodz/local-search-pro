@@ -8,18 +8,22 @@ interface Props {
   /** banner only: full-width page-end section with the top curve */
   bleed?: boolean;
   as?: "h2" | "h3";
+  /** render the eyebrow as a heading (e.g. the page-level H2) */
+  eyebrowAs?: "p" | "h2";
+  /** bleed banner: show the white top curve (default true) */
+  curve?: boolean;
 }
-const { variant = "banner", eyebrow, title, text, primary, secondary, bleed = false, as: Heading = "h2" } = Astro.props;
+const { variant = "banner", eyebrow, title, text, primary, secondary, bleed = false, as: Heading = "h2", eyebrowAs: Eyebrow = "p", curve = true } = Astro.props;
 const hasSlot = Astro.slots.has("default");
 const hasActions = Astro.slots.has("actions");
 ---
 {variant === "banner" && (
   <section class:list={["banner", "on-dark", bleed && "banner--bleed"]}>
-    {bleed && <svg class="curve" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V0 C 1000 70, 400 70, 0 20 Z" fill="#fff" /></svg>}
+    {bleed && curve && <svg class="curve" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V0 C 1000 70, 400 70, 0 20 Z" fill="#fff" /></svg>}
     <img class="symbol" src="/brand/logos/svg/lsp-symbol-on-dark.svg" alt="" width="100" height="100" />
     <div class:list={[bleed && "container"]}>
       <div class="banner__inner">
-        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        {eyebrow && <Eyebrow class="eyebrow">{eyebrow}</Eyebrow>}
         <Heading class="banner__title">{title}</Heading>
         {text && <p class="text">{text}</p>}
         {hasSlot && <slot />}
@@ -29,6 +33,7 @@ const hasActions = Astro.slots.has("actions");
             {secondary && <Button variant="ghost-dark" href={secondary.href}>{secondary.label}</Button>}
           </>)}
         </div>
+        <slot name="after" />
       </div>
     </div>
   </section>

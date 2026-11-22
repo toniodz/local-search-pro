@@ -15,3 +15,28 @@
   for = "/brand/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# Old routes -> new routes (301)
+[[redirects]]
+  from = "/websites"
+  to = "/pay-monthly-websites/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/websites/"
+  to = "/pay-monthly-websites/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/google-business-profile"
+  to = "/google-business-profile-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/google-business-profile/"
+  to = "/google-business-profile-management/"
+  status = 301
+  force = true

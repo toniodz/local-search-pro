@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FAQ from "../components/FAQ.astro";
+import Steps from "../components/Steps.astro";
+import PackageTiles from "../components/PackageTiles.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import CTA from "../components/CTA.astro";
+import { route } from "../config/routes";
+
+const faqs = [
+  {
+    "question": "How much does a small business website cost?",
+    "answer": "Our pay-monthly websites start from £79 per month plus VAT, with an initial setup fee. This includes your website, hosting and ongoing maintenance within the agreed package."
+  },
+  {
+    "question": "Do I need a website for local SEO?",
+    "answer": "Not necessarily. You can start with Google Business Profile management, although a well-optimised website can provide more opportunities to attract customers through search."
+  },
+  {
+    "question": "Can you improve my existing website's SEO?",
+    "answer": "Yes. Our local SEO packages can work with existing websites, subject to an initial review of your website and its platform."
+  },
+  {
+    "question": "How long does local SEO take to work?",
+    "answer": "SEO is an ongoing process, and results depend on your industry, competition, location and existing online presence. Some improvements may become visible relatively quickly, while more competitive searches can take several months or longer. Rankings and enquiries cannot be guaranteed."
+  },
+  {
+    "question": "Can I upgrade my package?",
+    "answer": "Yes. As your business grows, you can move to a package that includes more ongoing support and optimisation."
+  },
+  {
+    "question": "Do you work with businesses across the UK?",
+    "answer": "Yes. Local Search Pro offers website and SEO services to small businesses throughout the UK."
+  }
+];
+const steps = [
+  {
+    "title": "Choose Your Package",
+    "text": "Browse our affordable website and SEO packages to find the right fit for your business."
+  },
+  {
+    "title": "Tell Us About Your Business",
+    "text": "Complete our simple onboarding process so we can understand your services, customers and goals."
+  },
+  {
+    "title": "We Get to Work",
+    "text": "Our team takes care of the agreed setup and ongoing work, keeping you informed along the way."
+  },
+  {
+    "title": "Keep Moving Forward",
+    "text": "Your website stays maintained, and your chosen SEO service provides regular improvements to support your online visibility."
+  }
+];
+const title = "Pay Monthly Websites & Local SEO | Local Search Pro";
+const description = "Affordable pay monthly websites from £79 and local SEO packages from £149. Simple, professional digital marketing for UK small businesses.";
+---
+<BaseLayout {title} {description} ctaHref="#packages">
+  <Hero title="Get Found Locally. Grow Your Business." lead="Affordable websites and local SEO for small businesses.">
+    <div class="stack muted" style="gap:12px;max-width:560px"><p>Your customers are searching online for businesses like yours. We help make sure they can find you.</p><p>From professional pay-monthly websites to Google Business Profile management and local SEO, we make getting your business online simple, affordable and hassle-free.</p><p>No confusing jargon. No expensive agency fees. Just practical digital marketing services designed to help your business grow.</p></div><div class="btn-row"><Button variant="primary" href="#packages" arrow>Explore Our Packages</Button><Button variant="ghost-dark" href={route("contact")}>Get in Touch</Button></div><ul class="ticks"><li>Professional websites</li><li>Affordable monthly plans</li><li>UK-based support</li></ul>
+    <Fragment slot="media">Laptop + phone composition showing an example small business website<br><small>(to be supplied)</small></Fragment>
+  </Hero>
+<section class="section "><div class="container"><div class="split section-head"><div class="stack"><h2 class="h2">Everything Your Business Needs to Get Found Online</h2></div><div class="stack rule-left muted"><p>Running a small business is demanding enough without worrying about websites, search rankings and Google updates.</p><p>At Local Search Pro, we take care of the technical side, helping you build a professional online presence, reach more local customers and turn searches into enquiries.</p><p>Whether you're starting a new business, need a better website or want to improve your visibility on Google, we've got an affordable solution.</p></div></div><div class="service-grid"><ServiceCard variant="feature" icon="pay-monthly-websites" title="Pay Monthly Websites" summary="A professional website without the big upfront cost." price={79} href="/pay-monthly-websites/" linkLabel="Explore Pay Monthly Websites" features={["Professional, mobile-friendly design","Up to five pages","Fast, secure hosting","Contact forms and clear calls to action","Basic search engine optimisation","Ongoing hosting and maintenance"]}>
+        <p>Get a modern, mobile-friendly website that gives your business a professional online presence and makes it easy for customers to contact you.</p>
+        <p>Our pay-monthly websites are ideal for small businesses that want a reliable, well-designed website without spending thousands upfront.</p>
+      </ServiceCard><ServiceCard variant="feature" icon="google-business-profile" title="Google Business Profile Management" summary="Make a better impression when customers find you on Google." price={69} href="/google-business-profile-management/" linkLabel="Explore Google Profile Management" features={["Google Business Profile optimisation","Regular profile updates","Business information management","Review response guidance","Performance monitoring"]}>
+        <p>Your Google Business Profile is often the first thing potential customers see when searching for local services.</p>
+        <p>We help keep your profile accurate, up to date and optimised so customers can find useful information about your business.</p>
+      </ServiceCard><ServiceCard variant="feature" icon="local-seo" title="Local SEO" summary="Help more local customers discover your business." price={149} href="/local-seo/" linkLabel="Explore Local SEO Packages" features={["Local keyword research","Website optimisation","Google Business Profile improvements","Local search performance tracking","Ongoing SEO recommendations and improvements","Easy-to-understand reporting"]}>
+        <p>If someone searches for your services in your area, you want your business to be one of the options they find.</p>
+        <p>Our affordable local SEO packages are designed to improve your visibility in relevant Google searches and help bring more potential customers to your website.</p>
+      </ServiceCard></div></div></section>
+<section class="section section--pale" id="packages"><div class="container"><div class="split section-head"><div class="stack"><h2 class="h2">Simple, Affordable Monthly Packages</h2><h3 class="h3 section-sub">Digital Marketing That Fits Your Business and Your Budget</h3></div><div class="stack rule-left muted"><p>You shouldn't need a huge marketing budget to have a professional website or improve your visibility online.</p><p>We've created straightforward monthly packages that give small businesses access to useful digital marketing services at a predictable cost.</p></div></div><PackageTiles /><div class="stack after-table"><p class="small-print"><em>Setup fees and minimum contract terms may apply.</em></p><div class="btn-row"><Button variant="primary" href={route("pricing")} arrow>View All Packages</Button></div></div></div></section>
+<section class="section "><div class="container"><div class="split section-head"><div class="stack"><h2 class="h2">Why Choose Local Search Pro?</h2><h3 class="h3 section-sub">Big Benefits. Small Business Prices.</h3></div><div class="stack rule-left muted"><p>We believe professional websites and effective digital marketing should be accessible to businesses of all sizes.</p><p>That's why we focus on practical services, affordable monthly pricing and straightforward support.</p></div></div><div class="why"><div><h3 class="h3">Affordable Monthly Pricing</h3><p>Know exactly what you're paying each month, with clearly defined services and no unexpected extras.</p></div><div><h3 class="h3">Designed for Small Businesses</h3><p>Our services are created with independent businesses, sole traders and growing local companies in mind.</p></div><div><h3 class="h3">Real People, Real Support</h3><p>We're a UK-based team offering practical help and straightforward advice, without the technical jargon.</p></div><div><h3 class="h3">Professional Websites That Work</h3><p>We build fast, mobile-friendly websites designed to make a great impression and encourage customers to get in touch.</p></div><div><h3 class="h3">Local Search Expertise</h3><p>We understand how customers search for businesses online and what helps businesses improve their local visibility.</p></div><div><h3 class="h3">Straightforward Reporting</h3><p>See what we're working on and how your online presence is performing, with updates you can understand.</p></div></div></div></section>
+<section class="section section--pale"><div class="container"><div class="split"><div class="stack"><h2 class="h2">Who Do We Help?</h2><h3 class="h3 section-sub">Helping Local Businesses Get More Visibility Online</h3></div><div class="stack muted prose"><p>Whether you're a sole trader, an established local company or just starting out, we can help you create a stronger online presence.</p><p>We work with businesses across a wide range of industries, including:</p><ul class="tags"><li>Plumbers, electricians and heating engineers</li><li>Builders, roofers and other trades</li><li>Landscapers and gardening businesses</li><li>Cleaners and property maintenance companies</li><li>Beauty salons and wellness businesses</li><li>Independent shops and local retailers</li><li>Professional service providers</li><li>New and growing small businesses</li></ul><p>Whatever your industry, our aim is simple: help the right customers find your business and make it easier for them to contact you.</p></div></div></div></section>
+<section class="section "><div class="container"><div class="section-head stack"><h2 class="h2">How It Works</h2><h3 class="h3 section-sub">Getting Started Couldn't Be Easier</h3></div><Steps items={steps} /><div style="margin-top:40px"><div class="btn-row"><Button variant="primary" href="#packages" arrow>Find Your Package</Button></div></div></div></section>
+<section class="section section--pale " id="faq"><div class="container"><FAQ items={faqs} /></div></section>
+<CTA variant="banner" bleed curve={false} eyebrow="Ready to Get Your Business Found?" eyebrowAs="h2" as="h3" title="Better Visibility Starts Here.">
+    <p class="muted">Whether you need a professional new website, help managing your Google Business Profile or affordable ongoing SEO, Local Search Pro makes it easier to get started.</p><p class="muted">Explore our packages and find a straightforward solution that works for your business and your budget.</p>
+    <Fragment slot="actions"><Button variant="primary" href="#packages" arrow>View Our Packages</Button><Button variant="ghost-dark" href={route("contact")}>Ask Us a Question</Button></Fragment>
+    <Fragment slot="after"><p class="small-print on-dark-small">Local Search Pro — Affordable websites and local SEO for UK businesses.</p></Fragment>
+  </CTA>
+</BaseLayout>

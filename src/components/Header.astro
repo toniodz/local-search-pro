@@ -2,15 +2,15 @@
 import Logo from "./Logo.astro";
 import Button from "./Button.astro";
 interface Props { ctaHref?: string }
-const { ctaHref = "/pricing" } = Astro.props;
-const path = Astro.url.pathname.replace(/(\.html|\/)$/, "") || "/";
+const { ctaHref = "#" } = Astro.props;
+const path = Astro.url.pathname.replace(/index\.html$/, "").replace(/\.html$/, "/");
+const norm = path.endsWith("/") ? path : path + "/";
 const links = [
   { href: "/", label: "Home" },
-  { href: "/websites", label: "Websites" },
-  { href: "/google-business-profile", label: "Google Profile" },
-  { href: "/local-seo", label: "Local SEO" },
-  { href: "/seo-growth", label: "SEO Growth" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/pay-monthly-websites/", label: "Websites" },
+  { href: "/google-business-profile-management/", label: "Google Profile" },
+  { href: "/local-seo/", label: "Local SEO" },
+  { href: "/seo-growth/", label: "SEO Growth" },
 ];
 ---
 <header class="site-header">
@@ -21,7 +21,7 @@ const links = [
       <span>Menu</span>
     </button>
     <nav class="nav" id="site-nav" aria-label="Main">
-      {links.map((l) => <a href={l.href} aria-current={path === l.href ? "page" : undefined}>{l.label}</a>)}
+      {links.map((l) => <a href={l.href} aria-current={norm === l.href ? "page" : undefined}>{l.label}</a>)}
       <Button href={ctaHref} size="sm" class="nav-cta">Get Started</Button>
     </nav>
   </div>

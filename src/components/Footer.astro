@@ -1,20 +1,16 @@
 ---
 import Logo from "./Logo.astro";
-const links = [
-  { href: "/websites", label: "Websites" },
-  { href: "/google-business-profile", label: "Google Profile" },
-  { href: "/local-seo", label: "Local SEO" },
-  { href: "/seo-growth", label: "SEO Growth" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" },
-];
+import { services } from "../data/services";
 ---
 <footer class="site-footer">
-  <div class="container">
-    <Logo />
-    <nav class="footer-nav" aria-label="Footer">
-      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+  <div class="container footer__grid">
+    <div class="stack" style="gap:12px">
+      <Logo />
+      <p>Local Search Pro — Affordable websites and local SEO for UK businesses.</p>
+    </div>
+    <nav aria-label="Services" class="footer__links">
+      {services.map((s) => <a href={s.path}>{s.id === "local-seo" ? "Local SEO" : s.name}</a>)}
     </nav>
-    <span>© {new Date().getFullYear()} Local Search Pro · Prices exclude VAT</span>
+    <p class="footer__legal">All prices exclude VAT. No Google rankings, leads or results are guaranteed.</p>
   </div>
 </footer>

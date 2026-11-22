@@ -1,15 +1,16 @@
 ---
-interface Props { eyebrow?: string; title: string }
-const { eyebrow, title } = Astro.props;
+/** PageHero: H1, lead line, copy and CTAs on the left; a labelled media placeholder on the right. */
+interface Props { title: string; lead?: string }
+const { title, lead } = Astro.props;
 ---
 <section class="hero on-dark">
   <div class="container hero__grid">
-    <div class="stack" style="gap:22px">
-      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <div class="stack hero__copy">
       <h1 class="h1">{title}</h1>
+      {lead && <p class="hero__lead">{lead}</p>}
       <slot />
     </div>
-    <slot name="media" />
+    <div class="hero__media" role="img" aria-label="Placeholder"><slot name="media" /></div>
   </div>
   <img class="swoosh" src="/brand/backgrounds/divider-swoosh-cyan.svg" alt="" width="1440" height="120" />
 </section>

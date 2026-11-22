@@ -8,7 +8,7 @@ import Icon from "../components/Icon.astro";
 import IconTile from "../components/IconTile.astro";
 import CTA from "../components/CTA.astro";
 import icons from "../data/icons.json";
-import { services } from "../data/services";
+import { services, setupLine } from "../data/services";
 import type { IconName } from "../data/services";
 
 const iconLabels: Record<string, string> = {
@@ -88,7 +88,7 @@ const iconNames = Object.keys(icons) as IconName[];
       <div class="sec-head"><h2>Pricing cards</h2><code>&lt;PriceCard name icon price setup features cta href featured /&gt;</code></div>
       <div class="grid4 equal">
         {services.map((s) => (
-          <PriceCard name={s.name} icon={s.icon} price={s.price} setup={s.setup} features={s.features} cta={s.cta} href="#pricing" featured={s.featured} />
+          <PriceCard name={s.name} icon={s.icon} price={s.price} setup={setupLine(s)} features={s.features} cta={s.cta} href="#pricing" featured={s.featured} includedLabel={s.includedLabel} />
         ))}
       </div>
       <p class="note">Website Starter and the features on the next two cards come from your copy and homepage mockup. SEO Growth features and any setup fees other than Website Starter's are placeholders marked TODO. The "Popular" badge is optional (<code>featured</code>).</p>

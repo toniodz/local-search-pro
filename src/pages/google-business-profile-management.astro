@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PriceCard from "../components/PriceCard.astro";
+import FAQ from "../components/FAQ.astro";
+import Steps from "../components/Steps.astro";
+import LocalBand from "../components/LocalBand.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import CTA from "../components/CTA.astro";
+import { route } from "../config/routes";
+import { byId, setupLine } from "../data/services";
+import { planCard, serviceSchema } from "../data/plans";
+
+const svc = byId("google-business-profile-management");
+const faqs = [
+  {
+    "question": "What is a Google Business Profile?",
+    "answer": "It's a free business listing that allows eligible businesses to manage how they appear on Google Search and Google Maps."
+  },
+  {
+    "question": "Can you create a Google Business Profile for me?",
+    "answer": "We can advise on profile creation and eligibility. New profile creation and verification assistance can be quoted separately where required."
+  },
+  {
+    "question": "Will this get my business to number one on Google?",
+    "answer": [
+      "No legitimate provider can guarantee a particular Google ranking. Local visibility depends on several factors, including relevance, distance and prominence.",
+      "Our service focuses on keeping your profile accurate, complete and professionally maintained."
+    ]
+  },
+  {
+    "question": "Can I still access my Google Business Profile?",
+    "answer": "Yes. You remain in control of your business profile. We request manager access to carry out the agreed work."
+  },
+  {
+    "question": "Can you remove negative reviews?",
+    "answer": "Businesses generally cannot remove genuine negative reviews simply because they disagree with them. Reviews that violate Google's policies can be reported to Google."
+  },
+  {
+    "question": "Is Google Business Profile management the same as SEO?",
+    "answer": "Not quite. Google Business Profile management focuses on your listing, while local SEO also considers your website, content, search performance and other visibility factors."
+  }
+];
+const steps = [
+  {
+    "title": "Choose Your Package",
+    "text": "Sign up for Google Profile Care through our straightforward monthly subscription."
+  },
+  {
+    "title": "Give Us Access",
+    "text": "We'll guide you through adding us as a manager of your Google Business Profile."
+  },
+  {
+    "title": "We Optimise Your Profile",
+    "text": "We'll review your listing, make agreed improvements and prepare your ongoing updates."
+  },
+  {
+    "title": "We Keep It Maintained",
+    "text": "We'll carry out the included monthly work and provide performance summaries."
+  }
+];
+const title = "Google Business Profile Management from £69 | Local Search Pro";
+const description = "Affordable Google Business Profile management from £69/month. Profile optimisation, Google updates and performance monitoring for UK small businesses.";
+const jsonLd = serviceSchema(svc, description);
+---
+<BaseLayout {title} {description} ctaHref="#pricing" {jsonLd}>
+  <Hero title="Google Business Profile Management" lead="Make Your Business Stand Out on Google">
+    <div class="stack muted" style="gap:12px;max-width:560px"><p>When people search for local businesses, Google Search and Google Maps are often where they start.</p><p>Your Google Business Profile helps potential customers discover your business, find your contact details, read reviews and learn about your services.</p><p>But keeping your profile accurate, complete and up to date takes time.</p><p>At Local Search Pro, we make it easier with affordable Google Business Profile management for small UK businesses.</p></div><p class="hero__price">Professional Google Business Profile management from <span class="hl">£69 per month</span> + VAT.</p><div class="btn-row"><Button variant="primary" href="#pricing" arrow>Get Started</Button></div>
+    <Fragment slot="media">Google Business Profile graphic: generic local listing in search + map<br><small>(to be supplied)</small></Fragment>
+  </Hero>
+<section class="section "><div class="container"><div class="split"><div class="stack"><h2 class="h2">Is Your Google Business Profile Working for You?</h2></div><div class="stack muted prose"><p>Your Google Business Profile is more than a business listing.</p><p>It can display your services, opening hours, photographs, customer reviews, website and contact information directly in Google Search and Maps.</p><p>An incomplete or outdated profile can leave potential customers with unanswered questions or the wrong impression of your business.</p><p>Our management service helps you maintain an accurate, useful and professional presence on Google, giving customers the information they need when they find you.</p></div></div></div></section>
+<section class="section section--pale"><div class="container"><div class="section-head stack"><h2 class="h2">What's Included in Our Google Business Profile Management?</h2></div><div class="cards"><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Initial Profile Review and Optimisation</h3><p>We'll review your existing profile and identify opportunities to improve its completeness, accuracy and relevance.</p><p>This includes checking your business details, categories, description and service information.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Regular Google Profile Updates</h3><p>We'll create and publish two profile updates per month to highlight your services, business news or other relevant information.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Business Information Management</h3><p>We'll help keep important information such as your contact details, services and opening hours accurate when changes are provided.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Review Response Support</h3><p>Customer reviews are an important part of building trust.</p><p>We'll provide practical guidance and response templates to help you respond professionally to customer feedback.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Profile Performance Monitoring</h3><p>We'll monitor available Google Business Profile performance information and provide a straightforward quarterly summary.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Ongoing Recommendations</h3><p>We'll identify practical opportunities to improve your profile and keep it useful for potential customers.</p></article></div></div></section>
+<section class="section " id="pricing"><div class="container"><div class="split" style="align-items:center"><div class="stack"><p class="eyebrow">Pricing</p><h2 class="h2">Affordable Google Profile Management</h2><p class="muted">A straightforward monthly service for businesses that want help maintaining and improving their Google Business Profile.</p></div>
+<PriceCard {...planCard(svc)} from={false} href={route("signup:Google Profile Care")} /></div></div></section>
+<section class="section section--pale"><div class="container"><div class="section-head stack"><h2 class="h2">Why Is Your Google Business Profile Important?</h2></div><div class="why"><div><h3 class="h3">Help Local Customers Discover You</h3><p>Your profile provides a way for customers searching on Google and Maps to discover your business.</p></div><div><h3 class="h3">Make a Better First Impression</h3><p>Accurate information, helpful photographs and a complete business description can make your business look more professional.</p></div><div><h3 class="h3">Make Contacting You Easier</h3><p>Customers can access your phone number, website, directions and other business information without having to search further.</p></div><div><h3 class="h3">Build Trust Through Reviews</h3><p>Customer reviews and thoughtful responses can help potential customers feel more confident about choosing your services.</p></div><div><h3 class="h3">Save Time</h3><p>Instead of remembering to update your listing, you can leave the agreed monthly management work to us.</p></div></div></div></section>
+<LocalBand title="Google Profile Management or Local SEO?" panelTitle="Our Local SEO packages also focus on your website, relevant search terms and ongoing optimisation." panelText="If you want help improving your wider local search visibility, our Local SEO Essentials package may be a better fit." ctaHref="/local-seo/" ctaLabel="Explore Local SEO Packages">
+    <p class="muted text-pretty">Google Business Profile management is a great starting point for businesses wanting their listing properly maintained.</p>
+    <p class="muted text-pretty">However, improving your visibility for competitive searches often requires more than profile updates.</p>
+  </LocalBand>
+<section class="section section--pale"><div class="container"><div class="section-head stack"><h2 class="h2">How It Works</h2></div><Steps items={steps} /></div></section>
+<section class="section  " id="faq"><div class="container"><FAQ items={faqs} /></div></section>
+<CTA variant="banner" bleed curve={false} eyebrow="" eyebrowAs="h2" as="h3" title="">
+    <h2 class="h1 cta__title">Give Your Business a Better Presence on Google</h2><p class="muted">Your Google Business Profile is an important part of how customers discover and evaluate your business.</p><p class="muted">Let us take care of the routine management and optimisation so you can focus on your customers.</p><p class="hero__price">Google Profile Care from <span class="hl">£69 per month</span> + VAT.</p>
+    <Fragment slot="actions"><Button variant="primary" href="#pricing" arrow>Get Started</Button><Button variant="ghost-dark" href={route("contact")}>Ask Us a Question</Button></Fragment>
+  </CTA>
+</BaseLayout>

@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PriceCard from "../components/PriceCard.astro";
+import FAQ from "../components/FAQ.astro";
+import Steps from "../components/Steps.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import CTA from "../components/CTA.astro";
+import { route } from "../config/routes";
+import { byId, setupLine } from "../data/services";
+import { planCard, serviceSchema } from "../data/plans";
+
+const svc = byId("seo-growth");
+const faqs = [
+  {
+    "question": "How much does SEO Growth cost?",
+    "answer": "SEO Growth costs £249 per month plus VAT, with a one-off setup fee of £199 plus VAT."
+  },
+  {
+    "question": "What's the difference between Local SEO and SEO Growth?",
+    "answer": "Local SEO Essentials focuses on foundational website improvements and Google Business Profile optimisation. SEO Growth includes more time for search performance analysis and additional monthly website improvements."
+  },
+  {
+    "question": "Can SEO guarantee more customers?",
+    "answer": "No. Search visibility, traffic and enquiries can be influenced by many factors, including competition, customer demand and your website's ability to convert visitors into enquiries."
+  },
+  {
+    "question": "Will you create new pages for my website?",
+    "answer": "Our standard package focuses on optimising existing website content. Where a new page would be beneficial, we can recommend it and provide a separate quotation."
+  },
+  {
+    "question": "Do you build backlinks?",
+    "answer": "External link-building campaigns are not included in this package. We prioritise website content, technical foundations and relevant on-page improvements."
+  },
+  {
+    "question": "How will I know what you're doing each month?",
+    "answer": "You'll receive a monthly summary of the work carried out, relevant performance indicators and the recommended next steps."
+  },
+  {
+    "question": "Can you work with WordPress websites?",
+    "answer": "Yes, we can work with many WordPress websites and other platforms, subject to a technical review and the necessary access."
+  }
+];
+const steps = [
+  {
+    "title": "Website Review",
+    "text": "We assess your website, services and existing search performance to understand where opportunities may exist."
+  },
+  {
+    "title": "SEO Priorities",
+    "text": "We identify the improvements likely to be most useful and agree on the work that fits your package."
+  },
+  {
+    "title": "Monthly Optimisation",
+    "text": "We carry out your scheduled SEO tasks, focusing on the agreed priorities."
+  },
+  {
+    "title": "Reporting and Next Steps",
+    "text": "We review available performance data, summarise completed work and recommend the next areas to focus on."
+  }
+];
+const title = "SEO Growth Packages from £249 | Local Search Pro";
+const description = "Ongoing SEO packages for UK small businesses from £249/month. Search Console analysis, website optimisation, local SEO and monthly reports.";
+const jsonLd = serviceSchema(svc, description);
+---
+<BaseLayout {title} {description} ctaHref="#pricing" {jsonLd}>
+  <Hero title="SEO Growth Packages for Small Businesses" lead="Take Your Online Visibility Further">
+    <div class="stack muted" style="gap:12px;max-width:560px"><p>Already have a website but feel it could be doing more for your business?</p><p>Maybe your services aren't appearing where you'd like them to on Google, your competitors are more visible or you're unsure which parts of your website need improving.</p><p>Our SEO Growth package gives small businesses access to more comprehensive, ongoing search engine optimisation without the price of a traditional full-service agency retainer.</p><p>We focus on understanding your website, identifying worthwhile opportunities and making regular improvements that support your visibility in search.</p></div><p class="hero__price">SEO Growth from <span class="hl">£249 per month</span> + VAT.</p><div class="btn-row"><Button variant="primary" href="#pricing" arrow>Explore SEO Growth</Button></div>
+    <Fragment slot="media">SEO Growth graphic: search performance trend + optimised pages<br><small>(to be supplied)</small></Fragment>
+  </Hero>
+<section class="section "><div class="container"><div class="split"><div class="stack"><h2 class="h2">More Than Basic SEO</h2></div><div class="stack muted prose"><p>Having a website is one thing. Helping potential customers discover it is another.</p><p>Search engine optimisation involves improving your website's content, structure and technical foundations so that search engines can better understand what your business offers.</p><p>But effective SEO isn't just about keywords.</p><p>It's about creating useful pages, helping visitors find the right information and making it easier for potential customers to take the next step.</p><p>Our SEO Growth package builds on our Local SEO Essentials service, with additional time dedicated to reviewing and improving your website.</p></div></div></div></section>
+<section class="section section--pale"><div class="container"><div class="section-head stack"><h2 class="h2">What's Included in SEO Growth?</h2></div><div class="cards"><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">SEO Review and Keyword Research</h3><p>We review your website, current search visibility and relevant keywords to identify opportunities for improvement.</p><p>We'll focus on searches that align with your services and business goals rather than simply chasing traffic.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Google Search Console Analysis</h3><p>Where data is available, we use Google Search Console to understand which searches generate impressions and clicks, which pages are performing and where improvements may be worthwhile.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">On-Page SEO Improvements</h3><p>We can improve page titles, meta descriptions, headings, service information and existing content to make important pages more relevant and useful.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Internal Linking Improvements</h3><p>We'll review opportunities to connect related pages, helping visitors navigate your website and search engines understand its structure.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Google Business Profile Management</h3><p>Your subscription includes Google Profile Care, with regular updates and ongoing profile maintenance.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Ongoing Monthly SEO Work</h3><p>We'll complete up to two agreed, scoped optimisation tasks each month based on the priorities identified during our reviews.</p></article><article class="card"><span class="tick" aria-hidden="true">✓</span><h3 class="h3">Monthly Reporting</h3><p>Receive a straightforward report showing completed work, relevant search performance and recommended next steps.</p></article></div></div></section>
+<section class="section " id="pricing"><div class="container"><div class="split" style="align-items:center"><div class="stack"><p class="eyebrow">Pricing</p><h2 class="h2">SEO Growth</h2><h3 class="h3 section-sub">Ongoing SEO Without the Big Agency Price Tag</h3><p class="muted">SEO Growth is designed for small businesses that already have a website and want more consistent attention given to their search performance.</p></div>
+<PriceCard {...planCard(svc)} from={false} href={route("signup:SEO Growth")} /></div></div></section>
+<section class="section section--pale"><div class="container"><div class="split"><div class="stack"><h2 class="h2">Who Is SEO Growth For?</h2></div><div class="stack muted prose"><p>This package may be a good fit if:</p><ul class="checklist"><li>You already have a business website but receive limited organic search traffic.</li><li>You want to improve the visibility of your existing services.</li><li>Your competitors appear more prominently in relevant searches.</li><li>You don't have the time or expertise to manage ongoing SEO.</li><li>You want regular improvements without committing to a large agency retainer.</li><li>You prefer a clearly defined monthly service with straightforward reporting.</li></ul><p>SEO Growth is particularly suited to established small businesses with a website that already has useful content but could benefit from ongoing optimisation.</p></div></div></div></section>
+<section class="section "><div class="container"><div class="section-head stack"><h2 class="h2">What Makes Our Approach Different?</h2></div><div class="why"><div><h3 class="h3">We Focus on Useful Improvements</h3><p>Not every business needs dozens of new pages or blogs.</p><p>Sometimes the biggest opportunities come from improving the pages you already have, clarifying your services or making your website easier to navigate.</p></div><div><h3 class="h3">We Look at Real Search Data</h3><p>Where possible, we use information from Google Search Console to understand how your website is performing and identify areas worth reviewing.</p></div><div><h3 class="h3">We Keep Things Straightforward</h3><p>You'll know what work is included, what we've completed and what we're focusing on next.</p></div><div><h3 class="h3">We Don't Promise Overnight Results</h3><p>SEO takes time, and no provider can guarantee particular rankings or a specific number of enquiries.</p><p>Our approach is to make sensible, measurable improvements that support your website's long-term performance.</p></div></div></div></section>
+<section class="section section--pale"><div class="container"><div class="split section-head"><div class="stack"><h2 class="h2">Local SEO Essentials or SEO Growth?</h2></div><div class="stack rule-left muted"><p>Not every business needs the same level of SEO support.</p></div></div><div class="table-wrap"><table class="compare"><thead><tr><th scope="col" class="sr-col"><span class="visually-hidden">Feature</span></th><th scope="col">Local SEO Essentials</th><th scope="col">SEO Growth</th></tr></thead><tbody><tr><th scope="row">Monthly price</th><td>£149 + VAT</td><td>£249 + VAT</td></tr><tr><th scope="row">Google Profile Care</th><td>Included</td><td>Included</td></tr><tr><th scope="row">Initial keyword research</th><td>Included</td><td>Included</td></tr><tr><th scope="row">Website optimisation</th><td>1 scoped task/month</td><td>Up to 2 scoped tasks/month</td></tr><tr><th scope="row">Search Console analysis</th><td>Basic review where available</td><td>More detailed ongoing analysis</td></tr><tr><th scope="row">Existing content optimisation</th><td>Within monthly task</td><td>Expanded scope</td></tr><tr><th scope="row">Internal linking</th><td>Within monthly task</td><td>Included in ongoing priorities</td></tr><tr><th scope="row">Monthly report</th><td>Included</td><td>Included</td></tr></tbody></table></div><div class="stack after-table"><p><strong>Choose Local SEO Essentials</strong> if you're starting to invest in local search visibility and want a simple, affordable package.</p><p><strong>Choose SEO Growth</strong> if you have an established website and want more regular analysis and optimisation.</p><div class="btn-row"><Button variant="primary" href="/local-seo/" arrow>Compare SEO Packages</Button></div></div></div></section>
+<section class="section "><div class="container"><div class="section-head stack"><h2 class="h2">How Our SEO Process Works</h2></div><Steps items={steps} /></div></section>
+<section class="section section--pale " id="faq"><div class="container"><FAQ items={faqs} /></div></section>
+<CTA variant="banner" bleed curve={false} eyebrow="Give Your Website the Attention It Deserves" eyebrowAs="h2" as="h3" title="Affordable, Ongoing SEO for Growing Businesses">
+    <p class="muted">Your website is an important business asset. Make sure you're giving it the opportunity to reach the right people.</p><p class="muted">With practical monthly improvements, search performance analysis and straightforward reporting, SEO Growth helps you make more of your existing website.</p><p class="hero__price">SEO Growth from <span class="hl">£249 per month</span> + VAT.</p>
+    <Fragment slot="actions"><Button variant="primary" href="#pricing" arrow>Get Started with SEO Growth</Button><Button variant="ghost-dark" href={route("contact")}>Ask Us a Question</Button></Fragment>
+  </CTA>
+</BaseLayout>

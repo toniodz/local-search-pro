@@ -1,9 +1,9 @@
 ---
 import Button from "./Button.astro";
-interface Props { title: string; panelTitle: string; panelText: string; ctaHref: string; ctaLabel: string }
-const { title, panelTitle, panelText, ctaHref, ctaLabel } = Astro.props;
+interface Props { title: string; panelTitle: string; panelText: string; ctaHref: string; ctaLabel: string; pale?: boolean }
+const { title, panelTitle, panelText, ctaHref, ctaLabel, pale = false } = Astro.props;
 ---
-<section style="padding-bottom:var(--section)">
+<section class:list={["section", pale && "section--pale"]}>
   <div class="container">
     <div class="local-band on-dark">
       <div class="stack">
