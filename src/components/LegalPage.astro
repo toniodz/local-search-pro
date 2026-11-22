@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { LEGAL_UPDATED } from "../config/site";
+import { route } from "../config/routes";
+interface Props { title: string; heading: string; description: string }
+const { title, heading, description } = Astro.props;
+---
+<BaseLayout {title} {description} ctaHref={route("pricing")}>
+  <section class="section">
+    <div class="container legal">
+      <h1 class="h1">{heading}</h1>
+      <p class="legal__updated">Last updated: {LEGAL_UPDATED}</p>
+      <slot />
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .legal { max-width: 800px; }
+  .legal__updated { margin-top: 20px; color: var(--ink-3); font-size: 15px; }
+  .legal :global(h2) { font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1.25; letter-spacing: -0.015em; margin: 40px 0 12px; }
+  .legal :global(p), .legal :global(ul), .legal :global(ol) { margin: 0 0 14px; color: var(--ink-2); }
+  .legal :global(ul), .legal :global(ol) { padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+  .legal :global(strong) { color: var(--ink); }
+</style>

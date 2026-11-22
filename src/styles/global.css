@@ -128,6 +128,9 @@ a:hover { color: var(--navy); }
 .footer__links { display: flex; flex-direction: column; gap: 0; }
 .footer__links a { color: #fff; text-decoration: none; padding: 7px 0; }
 .footer__links a:hover { color: var(--cyan); }
+.footer__legal-links { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.footer__legal-links a { color: var(--on-dark-2); padding: 8px 0; }
+.footer__legal-links a:hover { color: #fff; }
 .footer__legal { grid-column: 1 / -1; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; font-size: 13px; }
 
 /* Forms */
