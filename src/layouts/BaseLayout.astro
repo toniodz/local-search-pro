@@ -13,14 +13,13 @@ import { SITE } from "../config/site";
 interface Props {
   title: string;
   description: string;
-  ctaHref?: string;
   /** Extra JSON-LD (e.g. a Service) */
   jsonLd?: Record<string, unknown>;
   /** Dev-only pages: noindex, and bare = no site header/footer */
   noindex?: boolean;
   bare?: boolean;
 }
-const { title, description, ctaHref, jsonLd, noindex = false, bare = false } = Astro.props;
+const { title, description, jsonLd, noindex = false, bare = false } = Astro.props;
 
 // Canonical/OG URLs exist only when SITE_URL is configured. The domain is never guessed.
 const site = Astro.site;
@@ -71,7 +70,7 @@ const website = clean({ "@context": "https://schema.org", "@type": "WebSite", na
     <a class="skip-link" href="#main">Skip to content</a>
     {bare ? <slot /> : (
       <>
-        <Header ctaHref={ctaHref} />
+        <Header />
         <main id="main"><slot /></main>
         <Footer />
       </>
