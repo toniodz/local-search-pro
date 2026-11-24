@@ -1,4 +1,5 @@
 ---
+import heroImage from "../assets/hero-home.webp";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FAQ from "../components/FAQ.astro";
 import Steps from "../components/Steps.astro";
@@ -57,9 +58,8 @@ const title = "Pay Monthly Websites & Local SEO | Local Search Pro";
 const description = "Affordable pay monthly websites from £79 and local SEO packages from £149. Simple, professional digital marketing for UK small businesses.";
 ---
 <BaseLayout {title} {description}>
-  <Hero title="Get Found Locally. Grow Your Business." lead="Affordable websites and local SEO for small businesses.">
+  <Hero title="Get Found Locally. Grow Your Business." lead="Affordable websites and local SEO for small businesses." image={heroImage} imageAlt="Example small business website shown on three phones: a services page, a home page and a quote request form.">
     <div class="stack muted" style="gap:12px;max-width:560px"><p>Your customers are searching online for businesses like yours. We help make sure they can find you.</p><p>From professional pay-monthly websites to Google Business Profile management and local SEO, we make getting your business online simple, affordable and hassle-free.</p><p>No confusing jargon. No expensive agency fees. Just practical digital marketing services designed to help your business grow.</p></div><div class="btn-row"><Button variant="primary" href="#packages" arrow>Explore Our Packages</Button><Button variant="ghost-dark" href={route("contact")}>Get in Touch</Button></div><ul class="ticks"><li>Professional websites</li><li>Affordable monthly plans</li><li>UK-based support</li></ul>
-    <Fragment slot="media">Laptop + phone composition showing an example small business website<br><small>(to be supplied)</small></Fragment>
   </Hero>
 <section class="section "><div class="container"><div class="split section-head"><div class="stack"><h2 class="h2">Everything Your Business Needs to Get Found Online</h2></div><div class="stack rule-left muted"><p>Running a small business is demanding enough without worrying about websites, search rankings and Google updates.</p><p>At Local Search Pro, we take care of the technical side, helping you build a professional online presence, reach more local customers and turn searches into enquiries.</p><p>Whether you're starting a new business, need a better website or want to improve your visibility on Google, we've got an affordable solution.</p></div></div><div class="service-grid"><ServiceCard variant="feature" icon="pay-monthly-websites" title="Pay Monthly Websites" summary="A professional website without the big upfront cost." price={79} href="/pay-monthly-websites/" linkLabel="Explore Pay Monthly Websites" features={["Professional, mobile-friendly design","Up to five pages","Fast, secure hosting","Contact forms and clear calls to action","Basic search engine optimisation","Ongoing hosting and maintenance"]}>
         <p>Get a modern, mobile-friendly website that gives your business a professional online presence and makes it easy for customers to contact you.</p>
